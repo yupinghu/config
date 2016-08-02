@@ -1,0 +1,17 @@
+[user]
+        name = Yu Ping Hu
+        email = yu.ping.hu@gmail.com
+[core]
+        editor = emacs -nw
+        excludesfile = ~/config/gitignore
+[color]
+        ui = auto
+[alias]
+        cp = cherry-pick
+        co = checkout
+        amend = commit --amend .
+        r = review
+        draft = review -D
+        lg = log --oneline --graph --decorate
+        update = remote update -p
+        review = push gerrit HEAD:refs/for/master
