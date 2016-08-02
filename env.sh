@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Aliased for reloading this file
+# Aliases for reloading this file
 alias realias='source ~/config/env.sh'
 alias reenv='source ~/config/env.sh'
 
@@ -13,8 +13,8 @@ fi
 # Reset the path now, and downstream guys can add to it with the "normal" mechanism.
 PATH=$BASE_PATH
 
-# Prompt
-PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ "
+# Prompt -- replaced by Git prompt below, but keeping for future reference.
+# PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ "
 
 # basic aliases
 alias ll='ls -alGF'
@@ -24,8 +24,23 @@ alias tidy='rm -f *~ .*~'
 alias em='emacs'
 alias e='emacs -nw'
 
+# git
+alias gb='git co' # git branch
+alias gub='git rebase origin/master' # git update branch
+alias gsync='git update origin && gub'
+
+# Git prompt
+. ~/config/git-prompt.sh
+GIT_PS1_DESCRIBE_STYLE='describe'
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWCOLORHINTS=1
+PROMPT_COMMAND='__git_ps1 "\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]" "\\\$ "'
+
 # Steam stuff
 #alias steam="LD_PRELOAD='/usr/\$LIB/libstdc++.so.6' DISPLAY=:0 /usr/bin/steam"
 # Exec=env LD_PRELOAD="/usr/\$LIB/libstdc++.so.6" /usr/bin/steam %U
 
-. ~/config/env-dev.sh
+# Load per-machine (or otherwise not in git) files.
+if [ -a ~/config/env-more.sh ]; then
+    . ~/config/env-more.sh
+fi
