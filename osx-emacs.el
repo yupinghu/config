@@ -29,7 +29,7 @@
 (set-frame-parameter nil 'background-mode 'dark)
 (add-to-list 'custom-theme-load-path "~/config/solarized.emacs/")
 (if (display-graphic-p) (load-theme 'solarized t))
-(set-default-font "Roboto Mono-14")
+(set-default-font "Roboto Mono-16")
 
 ;; Turn on highlighting for long lines (default = big, in practice only will show up for specific modes as below)
 (require 'whitespace)
