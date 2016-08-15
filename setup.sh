@@ -17,6 +17,7 @@ case $1 in
         exit 1
 esac
 
+mkdir -p ~/tmp
 ln -fs ~/config/$1-emacs.el ~/.emacs
 ln -fs ~/config/gitconfig ~/.gitconfig
 if [ ! -d solarized.emacs ]; then

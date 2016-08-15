@@ -15,5 +15,6 @@
         lg = log --oneline --graph --decorate
         update = remote update -p
         review = push gerrit HEAD:refs/for/master
+        submit = push origin HEAD:master
 [push]
 	default = simple

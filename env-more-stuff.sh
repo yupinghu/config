@@ -22,3 +22,6 @@ alias pushdev='pushd $DEV_ROOT'
 
 # make
 export MAKEFLAGS='-j8'
+
+# OS X: Copy Message attachments
+alias cpMessageAttach='mkdir -p $HOME/Downloads/message_attachments && find $HOME/Library/Messages/Attachments -type f -exec cp "{}" $HOME/Downloads/message_attachments \;'
