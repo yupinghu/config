@@ -13,9 +13,6 @@ fi
 # Reset the path now, and downstream guys can add to it with the "normal" mechanism.
 PATH=$BASE_PATH
 
-# Prompt -- replaced by Git prompt below, but keeping for future reference.
-# PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ "
-
 # basic aliases
 alias ll='ls -alGF'
 alias la='ls -AGF'
@@ -34,7 +31,7 @@ alias gsync='git update origin && gub'
 GIT_PS1_DESCRIBE_STYLE='describe'
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWCOLORHINTS=1
-PROMPT_COMMAND='__git_ps1 "\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]" "\\\$ "'
+PROMPT_COMMAND='__git_ps1 "\[\033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\]" "\\\$ "'
 
 # Steam stuff
 #alias steam="LD_PRELOAD='/usr/\$LIB/libstdc++.so.6' DISPLAY=:0 /usr/bin/steam"

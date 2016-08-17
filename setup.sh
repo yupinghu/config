@@ -7,6 +7,9 @@ case $1 in
         if [ ! -d solarized.xcode ]; then
             git clone https://github.com/ArtSabintsev/Solarized-Dark-for-Xcode.git solarized.xcode
         fi
+        if [ ! -d solarized.terminal ]; then
+            git clone https://github.com/tomislav/osx-terminal.app-colors-solarized.git solarized.terminal
+        fi
         ;;
     ubuntu)
         # TODO: Don't do this if it's already been done
