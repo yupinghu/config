@@ -12,6 +12,15 @@ case $1 in
         fi
         ;;
     ubuntu)
+        if [ ! -d solarized.terminal ]; then
+            git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git solarized.terminal
+            solarized.terminal/install.sh
+        fi
+        if [ ! -d solarized.directory ]; then
+            git clone https://github.com/seebi/dircolors-solarized.git solarized.directory
+            eval `dircolors ~/config/solarized.directory/dircolors.256dark`
+            ln -fs ~/config/solarized.directory/dircolors.256dark .dircolors
+        fi
         # TODO: Don't do this if it's already been done
         printf '\n# yph config\n. ~/config/env.sh\n' >> ~/.bashrc
         ;;
