@@ -19,7 +19,7 @@ case $1 in
         if [ ! -d solarized.directory ]; then
             git clone https://github.com/seebi/dircolors-solarized.git solarized.directory
             eval `dircolors ~/config/solarized.directory/dircolors.256dark`
-            ln -fs ~/config/solarized.directory/dircolors.256dark .dircolors
+            ln -fs ~/config/solarized.directory/dircolors.256dark ~/.dircolors
         fi
         # TODO: Don't do this if it's already been done
         printf '\n# yph config\n. ~/config/env.sh\n' >> ~/.bashrc
