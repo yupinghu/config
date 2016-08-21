@@ -21,8 +21,9 @@ case $1 in
             eval `dircolors ~/config/solarized.directory/dircolors.256dark`
             ln -fs ~/config/solarized.directory/dircolors.256dark ~/.dircolors
         fi
-        # TODO: Don't do this if it's already been done
-        printf '\n# yph config\n. ~/config/env.sh\n' >> ~/.bashrc
+        if ! grep -q "# yph config" ~/.bashrc ; then
+            printf '\n# yph config\n. ~/config/env.sh\n' >> ~/.bashrc
+        fi
         ;;
     *)
         echo "unknown platform $1"
