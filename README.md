@@ -19,7 +19,14 @@ These should just get added to setup.sh the next time I run it.
 - [Spectacle](https://www.spectacleapp.com/) `brew cask install spectacle`
 - [Emacs](https://emacsformacosx.com/) `brew install emacs --with-cocoa`
 - [Chrome](https://www.google.com/chrome/browser/desktop/index.html) `brew cask install google-chrome`
+- [SkyFonts](https://skyfonts.com/)
+
+### Ubuntu
+Just add the appropriate apt-gets to setup.sh.
+- Emacs
+- Chrome
+- [Redshift](http://jonls.dk/redshift/)
+- TypeCatcher: `sudo apt-get install typecatcher`
 
 ### Other stuff
-- [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono?query=roboto&category=Monospace&selection.family=Roboto+Mono)
-- [Solarized](http://ethanschoonover.com/solarized)
+- [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono?query=roboto&category=Monospace&selection.family=Roboto+Mono): Figure out how to script SkyFonts/Typecatcher to install this?
