@@ -1,8 +1,6 @@
 # config
 yph's dotfiles and new machine setup scripts
 
-## Basic info
-
 Clone this to `~/config` and run `setup.sh <platform>`, where `<platform>` is
 either `osx` or `ubuntu`.
 
