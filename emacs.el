@@ -40,3 +40,6 @@
 (add-hook 'text-mode-hook (lambda () (setq-local whitespace-line-column 80)))
 (add-hook 'c++-mode-hook (lambda () (setq-local whitespace-line-column 80)))
 (add-hook 'sh-mode-hook (lambda () (setq-local whitespace-line-column 80)))
+(add-hook 'python-mode-hook (lambda () (setq-local whitespace-line-column 100)))
+(add-hook 'java-mode-hook (lambda () (setq-local whitespace-line-column 100)))
+(add-hook 'javascript-mode-hook (lambda () (setq-local whitespace-line-column 100)))
