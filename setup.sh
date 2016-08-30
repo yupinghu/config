@@ -29,7 +29,7 @@ function apt_get() {
 case $1 in
     osx)
         # Add env.sh to dotfiles.
-        printf 'PATH=$HOME/bin:$PATH\n. ~/config/env.sh\n' > ~/.bash_profile
+        printf '. ~/config/env.sh\n' > ~/.bash_profile
 
         # Get Homebrew, cask, fonts
         brew_path=$(which brew)
@@ -52,6 +52,7 @@ case $1 in
         fi
         if [ ! -d solarized.terminal ]; then
             git clone https://github.com/tomislav/osx-terminal.app-colors-solarized.git solarized.terminal
+            echo "Don't forget to import solarized into terminal.app"
         fi
         ;;
 
@@ -84,9 +85,14 @@ case $1 in
         exit 1
 esac
 
+# I like me some personal tmp.
 mkdir -p ~/tmp
+
+# Link some dotfiles into $HOME
 ln -fs ~/config/$1-emacs.el ~/.emacs
 ln -fs ~/config/gitconfig ~/.gitconfig
+
+# Get solarized for emacs.
 if [ ! -d solarized.emacs ]; then
     git clone https://github.com/sellout/emacs-color-theme-solarized.git solarized.emacs
 fi
