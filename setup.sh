@@ -20,10 +20,6 @@ function get_cask() {
     fi
 }
 
-function apt_get() {
-    echo "WARNING: Haven't set up the right apt-get for $1 yet"
-}
-
 ## MAIN SCRIPT
 
 case $1 in
@@ -74,11 +70,18 @@ case $1 in
         fi
 
         # Get other stuff
-        apt_get emacs
-        apt_get chrome
-        apt_get redshift
-        apt_get typecatcher
-        apt_get roboto-mono
+        sudo apt-get update
+        install_list=(
+            emacs24
+            google-chrome-stable
+            redshift
+            typecatcher
+        )
+        sudo apt-get install "${install_list[@]}"
+        if [ ! -e "$HOME/.fonts/typecatcher/Roboto Mono_regular.ttf" ] ; then
+            echo "Launching typecatcher, install Roboto Mono"
+            typecatcher
+        fi
         ;;
     *)
         echo "unknown platform $1"
