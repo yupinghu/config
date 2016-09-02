@@ -37,6 +37,7 @@ case $1 in
 
         # Get a bunch of software that I like
         get_brew emacs --with-cocoa
+        get_brew git
         get_cask flux
         get_cask spectacle
         get_cask google-chrome
