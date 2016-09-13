@@ -52,8 +52,10 @@ case $1 in
             echo "Don't forget to import solarized into terminal.app"
         fi
 
-        # Change font smoothing in emacs, because the default value makes text look fat.
-        defaults write org.gnu.Emacs AppleFontSmoothing -int 0
+        # Change font smoothing in emacs & Xcode, because the default value makes text look fat.
+        # Currently disabled because fat is better than ugly, but would LOVE to fix this long term.
+        # defaults write org.gnu.Emacs AppleFontSmoothing -int 0
+        # defaults write com.apple.dt.Xcode AppleFontSmoothing -int 0
         ;;
     ubuntu)
         # Add env.sh to dotfiles.
