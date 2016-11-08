@@ -23,6 +23,8 @@
 (setq-default js-indent-level 4)
 (setq-default indent-tabs-mode nil)
 
+(setq c-default-style "bsd")
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Color theme & font
