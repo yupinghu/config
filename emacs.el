@@ -19,11 +19,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq make-backup-files nil)
-(setq-default c-basic-offset 4)
 (setq-default js-indent-level 4)
 (setq-default indent-tabs-mode nil)
 
-(setq c-default-style "bsd")
+(setq c-default-style "bsd"
+      c-basic-offset 4)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
