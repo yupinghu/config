@@ -12,6 +12,8 @@
 ;; Modes
 (setq-default major-mode 'text-mode)
 
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ;; [Home] & [End] key should take you to beginning and end of lines..
 (global-set-key [home] 'beginning-of-line)
 (global-set-key [end] 'end-of-line)
@@ -40,7 +42,7 @@
 
 ;; Add mode-specific line lengths
 (add-hook 'text-mode-hook (lambda () (setq-local whitespace-line-column 80)))
-(add-hook 'c++-mode-hook (lambda () (setq-local whitespace-line-column 80)))
+(add-hook 'c++-mode-hook (lambda () (setq-local whitespace-line-column 100)))
 (add-hook 'sh-mode-hook (lambda () (setq-local whitespace-line-column 80)))
 (add-hook 'python-mode-hook (lambda () (setq-local whitespace-line-column 100)))
 (add-hook 'java-mode-hook (lambda () (setq-local whitespace-line-column 100)))

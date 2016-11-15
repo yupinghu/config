@@ -1,3 +1,3 @@
 (load-file "~/config/emacs.el")
 
-(set-default-font "Roboto Mono-16")
+(set-default-font "SF Mono-16")
