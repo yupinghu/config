@@ -90,10 +90,20 @@ case $1 in
         ;;
     windows)
         printf 'cd ~\n. ~/config/env.sh\n' > ~/.bash_profile
-        mkdir -p ~/tmp
         cp ~/config/gitconfig ~/.gitconfig
         cp ~/config/minttyrc ~/.minttyrc
-        exit 0
+        # For now, I'm just putting these here as a way to document what I want to install.
+        # TODO: Convert to chocolatey? or some other package manager
+        # iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+        install_list=(
+            https://www.google.com/chrome/browser/desktop/index.html
+            https://fonts.google.com/specimen/Roboto+Mono
+            https://atom.io/
+            https://git-scm.com/downloads
+            http://store.steampowered.com/
+            http://us.battle.net/en/app/
+            https://store.unity.com/
+        )
         ;;
     *)
         echo "unknown platform $1"
@@ -103,11 +113,13 @@ esac
 # I like me some personal tmp.
 mkdir -p ~/tmp
 
-# Link some dotfiles into $HOME
-ln -fs ~/config/$1-emacs.el ~/.emacs
-ln -fs ~/config/gitconfig ~/.gitconfig
+if [ $1 != "windows" ] ; then
+    # Link some dotfiles into $HOME
+    ln -fs ~/config/$1-emacs.el ~/.emacs
+    ln -fs ~/config/gitconfig ~/.gitconfig
 
-# Get solarized for emacs.
-if [ ! -d solarized.emacs ]; then
-    git clone https://github.com/sellout/emacs-color-theme-solarized.git solarized.emacs
+    # Get solarized for emacs.
+    if [ ! -d solarized.emacs ]; then
+        git clone https://github.com/sellout/emacs-color-theme-solarized.git solarized.emacs
+    fi
 fi

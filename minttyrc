@@ -22,5 +22,5 @@ BoldWhite=253,246,227
 
 FontHeight=12
 Font=Roboto Mono
-CursorType=block
+CursorType=underscore
 CursorBlinks=no
