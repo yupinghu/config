@@ -96,6 +96,7 @@ case $1 in
         # TODO: Convert to chocolatey? or some other package manager
         # iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
         install_list=(
+            https://github.com/oumu/mintty-color-schemes/blob/master/base16-solarized-mod.minttyrc
             https://www.google.com/chrome/browser/desktop/index.html
             https://fonts.google.com/specimen/Roboto+Mono
             https://atom.io/
