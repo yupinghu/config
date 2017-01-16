@@ -88,6 +88,13 @@ case $1 in
             typecatcher
         fi
         ;;
+    windows)
+        printf 'cd ~\n. ~/config/env.sh\n' > ~/.bash_profile
+        mkdir -p ~/tmp
+        cp ~/config/gitconfig ~/.gitconfig
+        cp ~/config/minttyrc ~/.minttyrc
+        exit 0
+        ;;
     *)
         echo "unknown platform $1"
         exit 1
