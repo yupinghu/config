@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-# Aliases for reloading this file
-alias realias='source ~/config/env.sh'
-alias reenv='source ~/config/env.sh'
+# Aliases relating to this file
+ENV_FILE=~/config/env.sh
+alias realias='source $ENV_FILE'
+alias reenv='source $ENV_FILE'
+alias catenv='cat $ENV_FILE'
 
 # Path setup
 # Store the path that existed before the first time we load this file, so that reloading
