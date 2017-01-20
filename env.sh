@@ -15,6 +15,10 @@ fi
 # Reset the path now, and downstream guys can add to it with the "normal" mechanism.
 PATH=$BASE_PATH
 
+if [ -z ${USERNAME+x} ]; then
+    export USENAME=$USER
+fi
+
 # basic aliases
 alias ll='ls -alGF'
 alias la='ls -AGF'
