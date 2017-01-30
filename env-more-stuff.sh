@@ -23,5 +23,14 @@ alias pushdev='pushd $DEV_ROOT'
 # make
 export MAKEFLAGS='-j8'
 
-# OS X: Copy Message attachments
+# MacOS: Copy Message attachments
 alias cpMessageAttach='mkdir -p $HOME/Downloads/message_attachments && find $HOME/Library/Messages/Attachments -type f -exec cp "{}" $HOME/Downloads/message_attachments \;'
+
+# MacOS: Application aliases
+alias run='open -a'
+alias activitymonitor='run "Activity Monitor"'
+alias chrome='run "Google Chrome"'
+alias facetime='run FaceTime'
+alias messages='run Messages'
+alias siri='run Siri'
+alias xcode='run Xcode'

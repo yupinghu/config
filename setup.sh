@@ -23,7 +23,7 @@ function get_cask() {
 ## MAIN SCRIPT
 
 case $1 in
-    osx)
+    mac)
         # Add env.sh to dotfiles.
         printf '. ~/config/env.sh\n' > ~/.bash_profile
 
