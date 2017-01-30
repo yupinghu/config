@@ -42,6 +42,7 @@ case $1 in
         get_cask spectacle
         get_cask google-chrome
         get_cask font-roboto-mono
+        # TODO: Get Atom here, then apm install package-sync
 
         # Get solarized
         if [ ! -d solarized.xcode ]; then
@@ -100,6 +101,7 @@ case $1 in
             https://www.google.com/chrome/browser/desktop/index.html
             https://fonts.google.com/specimen/Roboto+Mono
             https://atom.io/
+            apm install package-sync
             https://git-scm.com/downloads
             http://store.steampowered.com/
             http://us.battle.net/en/app/
@@ -118,6 +120,7 @@ if [ $1 != "windows" ] ; then
     # Link some dotfiles into $HOME
     ln -fs ~/config/$1-emacs.el ~/.emacs
     ln -fs ~/config/gitconfig ~/.gitconfig
+    ln -fs ~/config/atom.config/ ~/.atom
 
     # Get solarized for emacs.
     if [ ! -d solarized.emacs ]; then

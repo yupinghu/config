@@ -1,0 +1,42 @@
+"*":
+  "autocomplete-plus":
+    confirmCompletion: "tab always, enter when suggestion explicitly selected"
+    fileBlacklist: [
+      ".*"
+      "*.md"
+      "*.txt"
+      "*.md.html"
+    ]
+  core:
+    customFileTypes:
+      "text.md": [
+        "md.html"
+      ]
+    disabledPackages: [
+      "markdown-preview"
+      "language-gfm"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "solarized-dark-syntax"
+    ]
+  editor:
+    fontFamily: "roboto mono"
+    fontSize: 16
+    preferredLineLength: 100
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+    tabLength: 4
+    tabType: "soft"
+  "exception-reporting":
+    userId: "602e82fb-773b-8686-c7eb-20ed5f79c023"
+  "markdown-preview":
+    useGitHubStyle: true
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false

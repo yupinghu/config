@@ -1,0 +1,4 @@
+packages: [
+  "language-markdown"
+  "package-sync"
+]
