@@ -91,8 +91,7 @@ case $1 in
         ;;
     windows)
         printf 'cd ~\n. ~/config/env.sh\n' > ~/.bash_profile
-        cp ~/config/gitconfig ~/.gitconfig
-        cp ~/config/minttyrc ~/.minttyrc
+
         # For now, I'm just putting these here as a way to document what I want to install.
         # TODO: Convert to chocolatey? or some other package manager
         # iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
@@ -126,4 +125,11 @@ if [ $1 != "windows" ] ; then
     if [ ! -d solarized.emacs ]; then
         git clone https://github.com/sellout/emacs-color-theme-solarized.git solarized.emacs
     fi
+else
+    pushd ~
+    cmd //c mklink .minttyrc config\\minttyrc
+    cmd //c mklink .gitconfig config\\gitconfig
+    cd /c/Users/yupin
+    cmd //c mklink /D .atom c:\\home\\yph\\config\\atom.config
+    popd
 fi
