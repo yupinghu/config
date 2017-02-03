@@ -115,6 +115,9 @@ esac
 # I like me some personal tmp.
 mkdir -p ~/tmp
 
+# Create a default .gitconfig-more
+printf '[user]\n    email = yu.ping.hu@gmail.com\n' > ~/.gitconfig-more
+
 if [ $1 != "windows" ] ; then
     # Link some dotfiles into $HOME
     ln -fs ~/config/$1-emacs.el ~/.emacs

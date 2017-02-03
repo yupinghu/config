@@ -1,6 +1,7 @@
+[include]
+    path = .gitconfig-more
 [user]
     name = Yu Ping Hu
-    email = yu.ping.hu@gmail.com
 [core]
     editor = vi
     excludesfile = ~/config/gitignore
