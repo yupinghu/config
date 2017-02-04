@@ -3,12 +3,11 @@
     confirmCompletion: "tab always, enter when suggestion explicitly selected"
   core:
     customFileTypes:
-      "text.md": [
+      "source.gfm": [
         "md.html"
       ]
     disabledPackages: [
-      "markdown-preview"
-      "language-gfm"
+      "language-markdown"
     ]
     telemetryConsent: "no"
     themes: [
