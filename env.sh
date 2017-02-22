@@ -30,7 +30,16 @@ alias e='emacs -nw'
 # git
 alias gb='git co' # git branch
 alias gub='git rebase origin/master' # git update branch
-alias gsync='git update origin && gub'
+gnb() { # create new branch based on master
+  git checkout -b $1 master
+}
+gsync() { # syncs from origin, updates local master, and rebases current branch.
+  currentBranch=`git branch | grep "*"`
+  currentBranch=${currentBranch/* /}
+  git update origin
+  git rebase origin/master master
+  git rebase origin/master $currentBranch
+}
 
 # Git prompt
 . ~/config/git-prompt.sh

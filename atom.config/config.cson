@@ -1,6 +1,9 @@
 "*":
   "autocomplete-plus":
     confirmCompletion: "tab always, enter when suggestion explicitly selected"
+    scopeBlacklist: [
+      ".source.gfm"
+    ]
   core:
     customFileTypes:
       "source.gfm": [
@@ -20,7 +23,6 @@
     preferredLineLength: 100
     softWrap: true
     softWrapAtPreferredLineLength: true
-    tabLength: 4
     tabType: "soft"
   "exception-reporting":
     userId: "602e82fb-773b-8686-c7eb-20ed5f79c023"
