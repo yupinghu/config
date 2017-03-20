@@ -16,7 +16,7 @@ fi
 PATH=$BASE_PATH
 
 if [ -z ${USERNAME+x} ]; then
-    export USENAME=$USER
+    export USERNAME=$USER
 fi
 
 # basic aliases
@@ -47,10 +47,6 @@ GIT_PS1_DESCRIBE_STYLE='describe'
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWCOLORHINTS=1
 PROMPT_COMMAND='__git_ps1 "\[\033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\]" "\\\$ " && echo -ne "\033]0;${USERNAME}@${HOSTNAME}: ${PWD}\007"'
-
-# Steam stuff
-#alias steam="LD_PRELOAD='/usr/\$LIB/libstdc++.so.6' DISPLAY=:0 /usr/bin/steam"
-# Exec=env LD_PRELOAD="/usr/\$LIB/libstdc++.so.6" /usr/bin/steam %U
 
 # Load per-machine (or otherwise not in git) files.
 if [ -a ~/config/env-more.sh ]; then

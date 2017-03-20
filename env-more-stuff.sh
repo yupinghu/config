@@ -34,3 +34,7 @@ alias facetime='run FaceTime'
 alias messages='run Messages'
 alias siri='run Siri'
 alias xcode='run Xcode'
+
+# Steam on linux
+#alias steam="LD_PRELOAD='/usr/\$LIB/libstdc++.so.6' DISPLAY=:0 /usr/bin/steam"
+# Exec=env LD_PRELOAD="/usr/\$LIB/libstdc++.so.6" /usr/bin/steam %U
