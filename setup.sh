@@ -36,13 +36,12 @@ case $1 in
         get_tap caskroom/fonts
 
         # Get a bunch of software that I like
-        get_brew emacs --with-cocoa
         get_brew git
-        get_cask flux
         get_cask spectacle
         get_cask google-chrome
         get_cask font-roboto-mono
-        # TODO: Get Atom here, then apm install package-sync
+        get_cask atom
+        # TODO: apm install package-sync
 
         # Get solarized
         if [ ! -d solarized.xcode ]; then
