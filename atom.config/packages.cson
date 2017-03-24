@@ -1,4 +1,6 @@
 packages: [
+  "autocomplete-clang"
+  "clang-format"
   "language-markdown"
   "package-sync"
 ]

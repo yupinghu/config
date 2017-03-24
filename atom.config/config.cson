@@ -1,4 +1,5 @@
 "*":
+  "autocomplete-clang": {}
   "autocomplete-plus":
     confirmCompletion: "tab always, enter when suggestion explicitly selected"
     scopeBlacklist: [
@@ -12,6 +13,9 @@
     disabledPackages: [
       "language-markdown"
     ]
+    packagesWithKeymapsDisabled: [
+      "symbols-view"
+    ]
     telemetryConsent: "no"
     themes: [
       "one-dark-ui"
@@ -22,7 +26,6 @@
     fontSize: 16
     preferredLineLength: 100
     softWrap: true
-    softWrapAtPreferredLineLength: true
     tabType: "soft"
   "exception-reporting":
     userId: "602e82fb-773b-8686-c7eb-20ed5f79c023"
