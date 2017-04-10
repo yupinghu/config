@@ -11,7 +11,7 @@
 [alias]
     cp = cherry-pick
     co = checkout
-    amend = commit --amend --date=now .
+    amend = commit --amend --date= .
     r = review
     draft = review -D
     lg = log --oneline --graph --decorate
