@@ -35,6 +35,9 @@ alias messages='run Messages'
 alias siri='run Siri'
 alias xcode='run Xcode'
 
-# Steam on linux
-#alias steam="LD_PRELOAD='/usr/\$LIB/libstdc++.so.6' DISPLAY=:0 /usr/bin/steam"
-# Exec=env LD_PRELOAD="/usr/\$LIB/libstdc++.so.6" /usr/bin/steam %U
+# Windows: Application aliases (note: need to create these shortcuts too)
+alias bnet='start ~/bin/Battle.net.lnk'
+alias chrome='start ~/bin/chrome.lnk'
+alias discord='start ~/bin/Discord.lnk'
+alias steam='start ~/bin/Steam.lnk'
+alias unity='start ~/bin/unity.lnk'

@@ -51,11 +51,6 @@ case $1 in
             git clone https://github.com/tomislav/osx-terminal.app-colors-solarized.git solarized.terminal
             echo "Don't forget to import solarized into terminal.app"
         fi
-
-        # Change font smoothing in emacs & Xcode, because the default value makes text look fat.
-        # Currently disabled because fat is better than ugly, but would LOVE to fix this long term.
-        # defaults write org.gnu.Emacs AppleFontSmoothing -int 0
-        # defaults write com.apple.dt.Xcode AppleFontSmoothing -int 0
         ;;
     ubuntu)
         # Add env.sh to dotfiles.
@@ -77,7 +72,6 @@ case $1 in
         # Get other stuff
         sudo apt-get update
         install_list=(
-            emacs24
             google-chrome-stable
             redshift
             typecatcher
@@ -119,14 +113,8 @@ printf '[user]\n    email = yu.ping.hu@gmail.com\n' > ~/.gitconfig-more
 
 if [ $1 != "windows" ] ; then
     # Link some dotfiles into $HOME
-    ln -fs ~/config/$1-emacs.el ~/.emacs
     ln -fs ~/config/gitconfig ~/.gitconfig
     ln -fs ~/config/atom.config/ ~/.atom
-
-    # Get solarized for emacs.
-    if [ ! -d solarized.emacs ]; then
-        git clone https://github.com/sellout/emacs-color-theme-solarized.git solarized.emacs
-    fi
 else
     pushd ~
     cmd //c mklink .minttyrc config\\minttyrc
