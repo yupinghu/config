@@ -11,7 +11,7 @@
         "md.html"
       ]
     disabledPackages: [
-      "language-markdown"
+      "language-gfm"
     ]
     packagesWithKeymapsDisabled: [
       "symbols-view"
@@ -22,6 +22,7 @@
       "solarized-dark-syntax"
     ]
   editor:
+    atomicSoftTabs: false
     fontFamily: "roboto mono"
     fontSize: 16
     preferredLineLength: 100
