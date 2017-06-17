@@ -26,3 +26,5 @@ Font=Roboto Mono
 CursorType=underscore
 CursorBlinks=no
 PgUpDnScroll=yes
+Columns=125
+Rows=71

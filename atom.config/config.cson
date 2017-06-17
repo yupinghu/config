@@ -19,8 +19,7 @@
       "solarized-dark-syntax"
     ]
   editor:
-    atomicSoftTabs: false
-    fontFamily: "roboto mono"
+    fontFamily: "noto mono"
     fontSize: 16
     preferredLineLength: 100
     tabType: "soft"
