@@ -10,18 +10,16 @@
       "source.gfm": [
         "md.html"
       ]
-    disabledPackages: [
-      "language-gfm"
-    ]
     telemetryConsent: "no"
     themes: [
       "one-dark-ui"
       "solarized-dark-syntax"
     ]
   editor:
-    fontFamily: "noto mono"
+    fontFamily: "dejavu sans mono"
     fontSize: 16
     preferredLineLength: 100
+    softWrap: true
     tabType: "soft"
   "exception-reporting":
     userId: "602e82fb-773b-8686-c7eb-20ed5f79c023"
