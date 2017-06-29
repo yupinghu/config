@@ -22,7 +22,7 @@ White=147,161,161
 BoldWhite=253,246,227
 
 FontHeight=12
-Font=DejaVu Sans Mono
+Font=Hack
 CursorType=underscore
 CursorBlinks=no
 PgUpDnScroll=yes
