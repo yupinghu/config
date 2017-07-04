@@ -115,11 +115,16 @@ if [ $1 != "windows" ] ; then
     # Link some dotfiles into $HOME
     ln -fs ~/config/gitconfig ~/.gitconfig
     ln -fs ~/config/atom.config/ ~/.atom
+    # set autocrlf
+    printf '[core]\n    autocrlf = input\n' >> ~/.gitconfig-more
 else
+    # Link dotfiles
     pushd ~
     cmd //c mklink .minttyrc config\\minttyrc
     cmd //c mklink .gitconfig config\\gitconfig
     cd /c/Users/yupin
     cmd //c mklink /D .atom c:\\home\\yph\\config\\atom.config
     popd
+    # set autocrlf
+    printf '[core]\n    autocrlf = true\n' >> ~/.gitconfig-more
 fi

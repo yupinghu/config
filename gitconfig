@@ -5,7 +5,6 @@
 [core]
     editor = vi
     excludesfile = ~/config/gitignore
-    autocrlf = input
 [color]
     ui = auto
 [alias]
