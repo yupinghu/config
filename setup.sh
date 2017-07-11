@@ -39,9 +39,9 @@ case $1 in
         get_brew git
         get_cask spectacle
         get_cask google-chrome
-        get_cask font-roboto-mono
         get_cask atom
         # TODO: apm install package-sync
+        get_cask font-hack
 
         # Get solarized
         if [ ! -d solarized.xcode ]; then
@@ -74,13 +74,10 @@ case $1 in
         install_list=(
             google-chrome-stable
             redshift
-            typecatcher
+            atom
+            fonts-hack-ttf
         )
         sudo apt-get install "${install_list[@]}"
-        if [ ! -e "$HOME/.fonts/typecatcher/Roboto Mono_regular.ttf" ] ; then
-            echo "Launching typecatcher, install Roboto Mono"
-            typecatcher
-        fi
         ;;
     windows)
         printf 'cd ~\n. ~/config/env.sh\n' > ~/.bash_profile
@@ -91,9 +88,9 @@ case $1 in
         install_list=(
             https://github.com/oumu/mintty-color-schemes/blob/master/base16-solarized-mod.minttyrc
             https://www.google.com/chrome/browser/desktop/index.html
-            https://fonts.google.com/specimen/Roboto+Mono
             https://atom.io/
             apm install package-sync
+            https://github.com/source-foundry/Hack-windows-installer/releases/tag/1.2.0
             https://git-scm.com/downloads
             http://store.steampowered.com/
             http://us.battle.net/en/app/
