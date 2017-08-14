@@ -102,6 +102,9 @@ case $1 in
         exit 1
 esac
 
+# Set my personal email address in this repository.
+git config user.email yu.ping.hu@gmail.com
+
 # I like me some personal tmp.
 mkdir -p ~/tmp
 
