@@ -19,6 +19,8 @@ if [ -z ${USERNAME+x} ]; then
     export USERNAME=$USER
 fi
 
+alias grp='grep -r -I --exclude-dir=build --exclude-dir=cmake-build* --exclude-dir=obj --exclude-dir=dst'
+
 # basic aliases
 alias ll='ls -alGF'
 alias la='ls -AGF'
