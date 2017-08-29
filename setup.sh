@@ -114,7 +114,7 @@ printf '[user]\n    email = yu.ping.hu@gmail.com\n' > ~/.gitconfig-more
 if [ $1 != "windows" ] ; then
     # Link some dotfiles into $HOME
     ln -fs ~/config/gitconfig ~/.gitconfig
-    ln -fs ~/config/atom.config/ ~/.atom
+    ln -fs ~/config/atom.config ~/.atom
     ln -fs ~/config/vimrc ~/.vimrc
     # set autocrlf
     printf '[core]\n    autocrlf = input\n' >> ~/.gitconfig-more
