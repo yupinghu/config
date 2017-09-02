@@ -43,6 +43,14 @@ gsync() { # syncs from origin, updates local master, and rebases current branch.
   git rebase origin/master $currentBranch
 }
 
+createbranch() {
+  currentBranch=`git branch | grep "*"`
+  currentBranch=${currentBranch/* /}
+  git push origin HEAD:yph/$currentBranch
+  git co yph/$currentBranch
+  git branch -d $currentBranch
+}
+
 # Git prompt
 . ~/config/git-prompt.sh
 GIT_PS1_DESCRIBE_STYLE='describe'
