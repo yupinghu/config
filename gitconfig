@@ -13,7 +13,7 @@
     amend = commit --amend --date=now .
     r = review
     draft = review -D
-    lg = log --oneline --graph --decorate
+    lg = log --color --graph --decorate --date-order --date=short --format=format:'%C(auto)%h %s %C(green)[%cd %aE]%C(auto)%d'
     update = remote update -p
     review = push gerrit HEAD:refs/for/master
     submit = push origin HEAD:master

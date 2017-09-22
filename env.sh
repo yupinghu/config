@@ -51,6 +51,11 @@ createbranch() {
   git branch -d $currentBranch
 }
 
+createremotebranch() {
+  git co -b yph/$1
+  git push --set-upstream origin yph/$1
+}
+
 # Git prompt
 . ~/config/git-prompt.sh
 GIT_PS1_DESCRIBE_STYLE='describe'
