@@ -43,15 +43,7 @@ gsync() { # syncs from origin, updates local master, and rebases current branch.
   git rebase origin/master $currentBranch
 }
 
-createbranch() {
-  currentBranch=`git branch | grep "*"`
-  currentBranch=${currentBranch/* /}
-  git push origin HEAD:yph/$currentBranch
-  git co yph/$currentBranch
-  git branch -d $currentBranch
-}
-
-createremotebranch() {
+createremotebranch() { # Start a new branch based on current branch and push it.
   git co -b yph/$1
   git push --set-upstream origin yph/$1
 }
