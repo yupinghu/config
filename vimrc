@@ -1,1 +1,1 @@
-let &colorcolumn=80
+let &colorcolumn=72
