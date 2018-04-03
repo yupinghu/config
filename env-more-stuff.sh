@@ -29,10 +29,15 @@ alias cpMessageAttach='mkdir -p $HOME/Downloads/message_attachments && find $HOM
 # MacOS: Application aliases
 alias run='open -a'
 alias activitymonitor='run "Activity Monitor"'
+alias atom='run atom'
+alias c='run Calendar'
 alias chrome='run "Google Chrome"'
 alias facetime='run FaceTime'
-alias messages='run Messages'
+alias m='run Mail'
+alias msg='run Messages'
+alias safari='run Safari'
 alias siri='run Siri'
+alias spectacle='run Spectacle'
 alias xcode='run Xcode'
 
 # Windows: Application aliases (note: need to create these shortcuts too)
