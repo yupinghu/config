@@ -41,9 +41,15 @@ alias siri='run Siri'
 alias spectacle='run Spectacle'
 alias xcode='run Xcode'
 
-# Windows: Application aliases (note: need to create these shortcuts too)
-alias bnet='start ~/bin/Battle.net.lnk'
-alias chrome='start ~/bin/chrome.lnk'
-alias discord='start ~/bin/Discord.lnk'
-alias steam='start ~/bin/Steam.lnk'
-alias unity='start ~/bin/unity.lnk'
+# WSL: workaround for command line arguments in atom not really working due to filesystem fun.
+atom1() {
+  cmd.exe /c atom "c:\home\yph\\$1"
+}
+
+# WSL: Start apps using shortcuts.
+startlnk() {
+  cmd.exe /c start "c:\home\yph\bin\\$1.lnk"
+}
+alias atom='atom1'
+alias chrome='startlnk chrome'
+# ... and add more shortcuts as needed.
