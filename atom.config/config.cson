@@ -15,6 +15,7 @@
       "one-dark-ui"
       "solarized-dark-syntax"
     ]
+    uriHandlerRegistration: "always"
   editor:
     fontFamily: "hack"
     fontSize: 16

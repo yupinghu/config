@@ -97,6 +97,13 @@ case $1 in
             https://store.unity.com/
         )
         ;;
+    wsl)
+        # Add env.sh to dotfiles.
+        if ! grep -q "# yph config" ~/.bashrc ; then
+          printf '\n# yph config\n. ~/config/env.sh\n' >> ~/.bashrc
+        fi
+        ln -fs ~/config/minttyrc ~/minttyrc
+        ;;
     *)
         echo "unknown platform $1"
         exit 1
