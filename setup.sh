@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+username=`whoami`
+
 # Homebrew wrapper functions
 function get_tap() {
   if ! brew tap | grep -q "$1" 2> /dev/null ; then
@@ -32,8 +34,8 @@ function add_env() {
   if [ $1 == "mac" ] ; then
     printf '. ~/config/env.sh\n' > ~/.bash_profile
   else
-    if ! grep -q "# yph config" ~/.bashrc ; then
-      printf '\n# yph config\n. ~/config/env.sh\numask 022\n' >> ~/.bashrc
+    if ! grep -q "# $username config" ~/.bashrc ; then
+      printf '\n# $username config\n. ~/config/env.sh\numask 022\n' >> ~/.bashrc
     fi
   fi
 }
@@ -108,10 +110,10 @@ function link_dotfiles() {
   if [ $1 == "wsl" ]; then
     pushd /mnt/c/Users/yupin > /dev/null
     if [ ! -h .atom ] ; then
-      cmd.exe /c mklink /D .atom c:\\home\\yph\\config\\atom.config
+      cmd.exe /c mklink /D .atom c:\\home\\$username\\config\\atom.config
     fi
     cd AppData/Roaming/wsltty
-    printf "ThemeFile=c:\home\yph\config\minttyrc\n" > config
+    printf "ThemeFile=c:\home\$username\config\minttyrc\n" > config
     popd > /dev/null
   else
     ln -fs ~/config/atom.config ~/.atom
@@ -121,8 +123,8 @@ function link_dotfiles() {
 # Make ~/tmp
 function make_tmp() {
   if [ $1 == "wsl" ]; then
-    mkdir -p /mnt/c/home/yph/tmp
-    ln -fs /mnt/c/home/yph/tmp ~/tmp
+    mkdir -p /mnt/c/home/$username/tmp
+    ln -fs /mnt/c/home/$username/tmp ~/tmp
   else
     mkdir -p ~/tmp
   fi
@@ -149,10 +151,24 @@ if [ -z $1 ]; then
   exit 1
 fi
 
-if [ $1 != "wsl" ] && [ $1 != "mac" ] && [ $1 != "ubuntu" ]; then
-  echo "unknown platform $1"
+if [ $1 != "ubuntu" ] && [ $1 != "mac" ] &&  [ $1 != "wsl" ]; then
+  echo "unknown platform $1 (expected 'ubuntu', 'mac', or 'wsl')"
   exit 1
 fi
+
+pushd ~ > /dev/null
+
+# For WSL, setup the links from Linux home directory into /mnt/c.
+if [ $1 == "wsl" ]; then
+  mkdir -p /mnt/c/home/downloads
+  ln -fs /mnt/c/home/downloads
+  mkdir -p /mnt/c/home/$username
+  ln -fs /mnt/c/home/$username winhome
+  ln -fs winhome/config
+  cd winhome
+fi
+
+clone git@github.com:yupinghu/config.git
 
 add_env $1
 get_solarized $1
@@ -160,5 +176,7 @@ install_software $1
 link_dotfiles $1
 make_tmp $1
 gitconfig $1
+
+popd > /dev/null
 
 exit 0
