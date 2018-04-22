@@ -41,14 +41,17 @@ alias siri='run Siri'
 alias spectacle='run Spectacle'
 alias xcode='run Xcode'
 
-# WSL: workaround for command line arguments in atom not really working due to filesystem fun.
+# WSL: Application aliases
+alias start="cmd.exe /c start"
+
+# Workaround for command line arguments in atom not really working due to filesystem fun.
 atom1() {
   cmd.exe /c atom "c:\home\yph\\$1"
 }
 
-# WSL: Start apps using shortcuts.
+# Start apps using shortcuts.
 startlnk() {
-  cmd.exe /c start "c:\home\yph\bin\\$1.lnk"
+  start "c:\home\yph\bin\\$1.lnk"
 }
 alias atom='atom1'
 alias chrome='startlnk chrome'
