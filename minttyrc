@@ -1,3 +1,5 @@
+BellType=0
+
 BoldAsFont=yes
 Term=xterm-256color
 BoldAsColour=yes
