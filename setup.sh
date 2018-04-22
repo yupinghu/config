@@ -110,6 +110,8 @@ function link_dotfiles() {
     if [ ! -h .atom ] ; then
       cmd.exe /c mklink /D .atom c:\\home\\yph\\config\\atom.config
     fi
+    cd AppData/Roaming/wsltty
+    printf "ThemeFile=c:\home\yph\config\minttyrc\n" > config
     popd > /dev/null
   else
     ln -fs ~/config/atom.config ~/.atom
@@ -142,14 +144,14 @@ function gitconfig() {
 
 ## MAIN SCRIPT
 
-if [ $1 == "wsl" ]; then
-  TRUE_HOME=/mnt/c/home/yph
-  echo "wsl"
-else
-  if [ $1 != "mac" ] && [ $1 != "ubuntu" ]; then
-    echo "unknown platform $1"
-    exit 1
-  fi
+if [ -z $1 ]; then
+  echo "Usage: setup.sh [ ubuntu | mac | wsl ]"
+  exit 1
+fi
+
+if [ $1 != "wsl" ] && [ $1 != "mac" ] && [ $1 != "ubuntu" ]; then
+  echo "unknown platform $1"
+  exit 1
 fi
 
 add_env $1
