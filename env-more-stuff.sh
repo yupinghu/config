@@ -42,17 +42,32 @@ alias spectacle='run Spectacle'
 alias xcode='run Xcode'
 
 # WSL: Application aliases
+function atom() {
+  (cd "$1" && cmd.exe /c atom .)
+}
+
+# Note that you can also use this to open folders.
 alias start="cmd.exe /c start"
 
-# Workaround for command line arguments in atom not really working due to filesystem fun.
-atom1() {
-  cmd.exe /c atom "c:\home\yph\\$1"
+# Start apps where they live.
+runInDir() {
+  (cd "$1/$2" && shift && shift && start $@)
+}
+runProgram() {
+  runInDir "/mnt/c/Program Files" "$@"
+}
+runX86Program() {
+  runInDir "/mnt/c/Program Files (x86)/" "$@"
+}
+runLocalApp() {
+  runInDir "/mnt/c/Users/yupin/AppData/Local" "$@"
 }
 
-# Start apps using shortcuts.
-startlnk() {
-  start "c:\home\yph\bin\\$1.lnk"
-}
-alias atom='atom1'
-alias chrome='startlnk chrome'
-# ... and add more shortcuts as needed.
+alias bnet='runX86Program Battle.net Battle.net Launcher.exe'
+alias calibre='runProgram Calibre2 calibre.exe'
+alias chrome='runX86Program Google/Chrome/Application chrome.exe'
+alias discord='runLocalApp Discord Update.exe --processStart Discord.exe'
+alias kobo='runX86Program Kobo Kobo.exe'
+alias signal='runLocalApp Programs/signal-desktop Signal.exe'
+alias steam='runX86Program Steam Steam.exe'
+alias as='runProgram "Android/Android Studio/bin" studio64.exe'
