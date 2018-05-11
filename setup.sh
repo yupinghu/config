@@ -51,6 +51,7 @@ function get_solarized() {
       clone  https://github.com/Anthony25/gnome-terminal-colors-solarized.git solarized.terminal solarized.terminal/install.sh
     fi
   fi
+  clone https://github.com/4lex4/intellij-platform-solarized.git solarized.intellij
 }
 
 # Install desired software from a package manager
