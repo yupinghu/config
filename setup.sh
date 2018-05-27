@@ -51,7 +51,8 @@ function get_solarized() {
       clone  https://github.com/Anthony25/gnome-terminal-colors-solarized.git solarized.terminal solarized.terminal/install.sh
     fi
   fi
-  clone https://github.com/4lex4/intellij-platform-solarized.git solarized.intellij
+  # JetBrains IDEs
+  clone https://github.com/4lex4/intellij-platform-solarized solarized.jetbrains
 }
 
 # Install desired software from a package manager
@@ -76,6 +77,7 @@ function install_software() {
     # Stuff common to ubuntu and wsl.
     sudo apt-get update
     sudo apt-get install git
+
     if [ $1 == "ubuntu" ] ; then
       install_list=(
         google-chrome-stable
@@ -89,15 +91,11 @@ function install_software() {
       # TODO: Convert to chocolatey? or some other package manager
       # iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
       install_list=(
-          https://github.com/oumu/mintty-color-schemes/blob/master/base16-solarized-mod.minttyrc
           https://www.google.com/chrome/browser/desktop/index.html
           https://atom.io/
           apm install package-sync
-          https://github.com/source-foundry/Hack-windows-installer/releases/tag/1.2.0
-          https://git-scm.com/downloads
           http://store.steampowered.com/
           http://us.battle.net/en/app/
-          https://store.unity.com/
           https://github.com/source-foundry/Hack
       )
     fi
@@ -159,6 +157,11 @@ fi
 
 pushd ~ > /dev/null
 
+# First things first: Get software, including git.
+install_software $1
+
+clone git@github.com:yupinghu/config.git
+
 # For WSL, setup the links from Linux home directory into /mnt/c.
 if [ $1 == "wsl" ]; then
   mkdir -p /mnt/c/home/downloads
@@ -169,11 +172,8 @@ if [ $1 == "wsl" ]; then
   cd winhome
 fi
 
-clone git@github.com:yupinghu/config.git
-
 add_env $1
 get_solarized $1
-install_software $1
 link_dotfiles $1
 make_tmp $1
 gitconfig $1

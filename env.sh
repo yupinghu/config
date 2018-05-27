@@ -58,6 +58,9 @@ PROMPT_COMMAND='__git_ps1 "\[\033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\
 # Git completion
 . ~/config/git-completion.bash
 
+# CMake
+alias build='(cd build && make -j8)'
+
 # Load per-machine (or otherwise not in git) files.
 if [ -a ~/config/env-more.sh ]; then
     . ~/config/env-more.sh
