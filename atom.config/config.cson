@@ -29,6 +29,8 @@
   "package-sync":
     createOnChange: true
     forceOverwrite: true
+  "spell-check":
+    useLocales: false
   "tree-view":
     hideVcsIgnoredFiles: true
   welcome:
