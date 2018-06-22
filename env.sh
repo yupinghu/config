@@ -26,8 +26,6 @@ alias ll='ls -alGF'
 alias la='ls -AGF'
 alias l='ls -CGF'
 alias tidy='rm -f *~ .*~'
-alias em='emacs'
-alias e='emacs -nw'
 
 # git
 alias gb='git co' # git branch

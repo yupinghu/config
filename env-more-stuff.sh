@@ -6,7 +6,7 @@
 export P4PORT='perforce:1666'
 export P4USER='yph'
 export P4CLIENT='yph_client'
-export P4EDITOR='emacs -nw'
+export P4EDITOR='vim'
 
 # project directories
 DEV_ROOT=$HOME/dev
