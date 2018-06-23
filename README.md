@@ -13,11 +13,8 @@ Some notes about some goofy stuff with WSL:
 * The setup script hardcodes my Windows username (look for `yupin`) when setting the symlink to the
   atom config directory. I'll fix this when they add
   [environment variable sharing](https://blogs.msdn.microsoft.com/commandline/2017/12/22/share-environment-vars-between-wsl-and-windows/).
-* WSL doesn't understand how to translate paths, so I have a bunch of aliases in `env-more-stuff.sh`
-  to `cd` into a Windows directory before starting a Windows program, since that seems to work.
-  When they add [`wslpath`](https://github.com/MicrosoftDocs/WSL/releases/tag/17046) I might be able
-  to fix this for real.
-* I added a wrapper bat file for git, but Android Studio doesn't seem to like it.
+* I added a wrapper bat file for git, but Jetbrains IDEs don't deal with it well. So, I had to
+  resort to installing git for Windows as well as using git in Ubuntu, which is lame, but oh well.
 
 ## How to Use
 
