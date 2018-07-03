@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 username=`whoami`
+windows_username=`whoami`
 
 # Homebrew wrapper functions
 function get_tap() {
@@ -107,12 +108,13 @@ function link_dotfiles() {
   ln -fs ~/config/gitconfig ~/.gitconfig
   ln -fs ~/config/vimrc ~/.vimrc
   if [ $1 == "wsl" ]; then
-    pushd /mnt/c/Users/yupin > /dev/null
+    pushd /mnt/c/Users/$windows_username > /dev/null
     if [ ! -h .atom ] ; then
+      # This needs to run as administrator in windows!
       cmd.exe /c mklink /D .atom c:\\home\\$username\\config\\atom.config
     fi
     cd AppData/Roaming/wsltty
-    printf "ThemeFile=c:\home\$username\config\minttyrc\n" > config
+    printf "ThemeFile=c:\home\\$username\config\minttyrc\n" > config
     popd > /dev/null
   else
     ln -fs ~/config/atom.config ~/.atom
@@ -155,12 +157,14 @@ if [ $1 != "ubuntu" ] && [ $1 != "mac" ] &&  [ $1 != "wsl" ]; then
   exit 1
 fi
 
-pushd ~ > /dev/null
+if [ $1 == "wsl" ] && [ ! -z $2 ]; then
+  windows_username=$2
+fi
 
 # First things first: Get software, including git.
 install_software $1
 
-clone git@github.com:yupinghu/config.git
+pushd ~ > /dev/null
 
 # For WSL, setup the links from Linux home directory into /mnt/c.
 if [ $1 == "wsl" ]; then
@@ -171,6 +175,9 @@ if [ $1 == "wsl" ]; then
   ln -fs winhome/config
   cd winhome
 fi
+
+clone git@github.com:yupinghu/config.git config
+cd config
 
 add_env $1
 get_solarized $1

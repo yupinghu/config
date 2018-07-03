@@ -22,9 +22,9 @@ fi
 alias grp='grep -r -I --exclude-dir=build --exclude-dir=cmake-build* --exclude-dir=obj --exclude-dir=dst'
 
 # basic aliases
-alias ll='ls -alGF'
-alias la='ls -AGF'
-alias l='ls -CGF'
+alias ll='ls -alGF --color=auto'
+alias la='ls -AGF --color=auto'
+alias l='ls -CGF --color=auto'
 alias tidy='rm -f *~ .*~'
 
 # git
@@ -58,6 +58,8 @@ PROMPT_COMMAND='__git_ps1 "\[\033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\
 
 # CMake
 alias build='(cd build && make -j8)'
+
+test -r .dircolors && eval "$(dircolors .dircolors)"
 
 # Load per-machine (or otherwise not in git) files.
 if [ -a ~/config/env-more.sh ]; then
