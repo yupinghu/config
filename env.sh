@@ -19,12 +19,18 @@ if [ -z ${USERNAME+x} ]; then
     export USERNAME=$USER
 fi
 
-alias grp='grep -r -I --exclude-dir=build --exclude-dir=cmake-build* --exclude-dir=obj --exclude-dir=dst'
+alias grp='grep -r -I --exclude-dir=build --exclude-dir=cmake-build* --exclude-dir=obj --exclude-dir=dst --exclude-dir=*xcodeproj'
 
 # basic aliases
-alias ll='ls -alGF --color=auto'
-alias la='ls -AGF --color=auto'
-alias l='ls -CGF --color=auto'
+if [[ `uname` == 'Darwin' ]]; then
+  alias ll='ls -alGF'
+  alias la='ls -AGF'
+  alias l='ls -CGF'
+else
+  alias ll='ls -alF --color=auto'
+  alias la='ls -AF --color=auto'
+  alias l='ls -CF --color=auto'
+fi
 alias tidy='rm -f *~ .*~'
 
 # git
