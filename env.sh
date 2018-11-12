@@ -40,11 +40,16 @@ gnb() { # create new branch based on master
   git checkout -b $1 master
 }
 gsync() { # syncs from origin, updates local master, and rebases current branch.
-  currentBranch=`git branch | grep "*"`
-  currentBranch=${currentBranch/* /}
+  currentBranch=`git rev-parse --abbrev-ref HEAD`
+  git rev-parse --verify develop &> /dev/null
+  if [ $? == 0 ]; then
+    mainBranch='develop'
+  else
+    mainBranch='master'
+  fi
   git update origin
-  git rebase origin/master master
-  git rebase origin/master $currentBranch
+  git rebase origin/$mainBranch $mainBranch
+  git rebase origin/$mainBranch $currentBranch
 }
 
 createremotebranch() { # Start a new branch based on current branch and push it.
