@@ -19,7 +19,7 @@ if [ -z ${USERNAME+x} ]; then
     export USERNAME=$USER
 fi
 
-alias grp='grep -r -I --exclude-dir=build --exclude-dir=cmake-build* --exclude-dir=obj --exclude-dir=dst --exclude-dir=*xcodeproj'
+alias grp='grep -r -I --exclude-dir=_* --exclude-dir=build --exclude-dir=cmake-build* --exclude-dir=obj --exclude-dir=dst --exclude-dir=*xcodeproj'
 
 # basic aliases
 if [[ `uname` == 'Darwin' ]]; then
