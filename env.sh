@@ -71,6 +71,11 @@ PROMPT_COMMAND='__git_ps1 "\[\033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\
 alias build='(cd build && make -j8)'
 
 test -r .dircolors && eval "$(dircolors .dircolors)"
+if [[ `uname` == 'Linux' ]]; then
+  alias mapmediakeys='xmodmap ~/config/mediakeys.xmodmap'
+else
+  alias mapmediakeys=':'
+fi
 
 # Load per-machine (or otherwise not in git) files.
 if [ -a ~/config/env-more.sh ]; then

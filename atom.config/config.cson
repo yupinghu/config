@@ -26,6 +26,8 @@
     userId: "602e82fb-773b-8686-c7eb-20ed5f79c023"
   "markdown-preview":
     useGitHubStyle: true
+  "one-dark-ui":
+    fontSize: 16
   "package-sync":
     createOnChange: true
     forceOverwrite: true
