@@ -15,10 +15,6 @@ function add_env() {
   if ! grep -q "# $username config" ~/.bashrc ; then
     printf "\n# $username config\n. ~/config/env.sh\numask 022\n" >> ~/.bashrc
   fi
-  # Tweak .xinitrc to add media key bindings.
-  if ! test -r .xinitrc || ! grep -q "xmodmap" ~/.xinitrc ; then
-    printf "\nxmodmap ~/config/mediakeys.xmodmap\n" >> ~/.xinitrc
-  fi
 }
 
 # Clone the various solarized repos that I use.
