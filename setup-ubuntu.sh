@@ -34,6 +34,8 @@ function install_software() {
     gnome-tweak-tool
     gnome-shell-extensions
     chrome-gnome-shell
+    fonts-hack
+    fonts-roboto
   )
   sudo apt install "${install_list[@]}"
 
@@ -42,19 +44,15 @@ function install_software() {
     google-chrome-stable
     atom
     fonts-hack-ttf
+    fonts-roboto-hinted
   )
   # TODO: Can this be automated?
   gnome_extensions_list=(
     Alternatetab
-    Clipboard indicator
     Dash to panel
-    Openweather
     Panel osd
-    Removable drive menu
-    Remove dropdown arrows
     Screenshot tool
     Gtile
-    System-monitor
   )
 }
 
@@ -78,6 +76,8 @@ function gitconfig() {
 
 # First things first: Get software, including git.
 install_software $1
+
+clone git@github.com:yupinghu/config.git
 
 pushd ~/config > /dev/null
 
