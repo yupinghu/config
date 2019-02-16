@@ -47,7 +47,16 @@ alias xcode='run Xcode'
 alias start="cmd.exe /c start"
 
 function atom() {
-  (cd "$1" && cmd.exe /c atom .)
+  if [ -z $1 ]; then
+    path="."
+  else
+    path=$1
+  fi
+  target_path=$(wslpath -a -w $(readlink -f $path))
+  if [ -z $target_path ]; then
+    target_path=$(wslpath -a -w $(readlink -f $HOME/winhome))
+  fi
+  (cmd.exe /C "atom.cmd $target_path" &> /dev/null)
 }
 
 # startApp path-to-app exeFileName [params...]
