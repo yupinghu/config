@@ -14,7 +14,7 @@ function clone() {
 # Add env.sh to dotfiles.
 function add_env() {
   if ! grep -q "# $username config" ~/.bashrc ; then
-    printf '\n# $username config\n. ~/config/env.sh\numask 022\n' >> ~/.bashrc
+    printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.bashrc
   fi
 }
 
@@ -29,16 +29,21 @@ function install_software() {
     sudo apt-get update
     sudo apt-get install git
 
-    # TODO: Convert to chocolatey? or some other package manager
-    # iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+    # TODO: Script the following, or maybe look at package managers like chocolatey.
+
+    # STEP 1: Install chrome manually:
+    # https://www.google.com/chrome/browser/desktop/index.html
+
+    # STEP 2: Open all these pages in chrome, download them, install them.
     install_list=(
         https://www.google.com/chrome/browser/desktop/index.html
         https://atom.io/
-        apm install package-sync
-        http://store.steampowered.com/
-        http://us.battle.net/en/app/
         https://github.com/source-foundry/Hack
+        https://fonts.google.com/specimen/Roboto?selection.family=Roboto
+        https://store.steampowered.com/
+        https://www.blizzard.com/en-us/apps/battle.net/desktop
         http://www.randyrants.com/category/sharpkeys/
+        https://discordapp.com/
     )
 }
 
@@ -50,7 +55,7 @@ function link_dotfiles() {
   # This needs to run as administrator in windows!
   #cmd.exe /c mklink /D .atom c:\\home\\$username\\config\\atom.config
   cd AppData/Roaming/wsltty
-  printf "ThemeFile=c:\home\\$username\config\minttyrc\n" > config
+  printf "ThemeFile=c:\home\\%s\config\minttyrc\n" $username > config
   popd > /dev/null
 }
 
@@ -78,17 +83,18 @@ if [ ! -z $1 ]; then
   windows_username=$1
 fi
 
-pushd /mnt/c/home > /dev/null
+# Setup "home" directory in Windows.
+mkdir -p /mnt/c/home/$username
+pushd /mnt/c/home/$username > /dev/null
+
+clone git@github.com:yupinghu/config.git config
 
 install_software
-clone git@github.com:yupinghu/config.git
-
-cd ~
 
 # Setup the links from Linux home directory into /mnt/c.
+cd ~
 mkdir -p /mnt/c/home/downloads
 ln -fs /mnt/c/home/downloads
-mkdir -p /mnt/c/home/$username
 ln -fs /mnt/c/home/$username winhome
 ln -fs winhome/config
 

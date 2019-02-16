@@ -10,14 +10,19 @@ yph's dotfiles and new machine setup scripts for Ubuntu, macOS, and Windows (WSL
 
 ## How to Use
 
-Run `setup.sh <platform>`, where `<platform>` is one of `ubuntu`, `mac`, or `wsl`. Note that you
+Run `setup-<platform>.sh`, where `<platform>` is one of `ubuntu`, `mac`, or `wsl`. Note that you
 can just grab the one file; it will then clone everything into `$HOME/config` and setup symlinks
 etc. from `$HOME` into this directory.
 
 If you're setting up for wsl, the script needs to know where your Windows home is (e.g.
 `/mnt/c/Users/yph`) in order to link Atom and wsltty configs. By default it uses your linux username
-but if it's different you can call `setup.sh wsl [windows_username]`. The script also creates a
-Windows symlink which apparently needs to run as administrator.
+but if it's different you can provide it as an argument to `setup-wsl.sh`. There are two parts of
+the script which currently aren't correctly automated:
+
+* Atom config directory is symlinked in Windows, but this must run as an administrator in Windows.
+  The line in the script for now can be copy/pasted into an Administrator PowerShell.
+* Software installation is sadly not automated; it's just a link of websites to where to get the
+  installers.
 
 (Side note: these scripts got started for keeping a consistent setup between a Mac laptop and Ubuntu
 workstation; I'm kinda amused that nowadays more and more of it is dedicated to WSL setup.)
