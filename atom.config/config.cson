@@ -6,6 +6,7 @@
       ".source.gfm"
     ]
   core:
+    colorProfile: "srgb"
     customFileTypes:
       "source.gfm": [
         "md.html"

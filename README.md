@@ -2,11 +2,27 @@
 
 yph's dotfiles and new machine setup scripts for Ubuntu, macOS, and Windows (WSL).
 
-## Windows prerequisites
+## Ubuntu
+
+Run the following commands:
+```
+wget https://raw.githubusercontent.com/yupinghu/config/master/ubuntu-install-software.sh
+. ubuntu-install-software.sh
+rm ubuntu-install-software.sh
+# Add your ssh keys to github
+git clone git@github.com:yupinghu/config.git
+cd config
+./setup-ubuntu.sh
+```
+
+It's not all one script so that you can install your ssh keys to github before cloning.
+
+## Windows
 
 * Install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about)
 * Install [wsltty](https://github.com/mintty/wsltty). This isn't strictly necessary but some of my
   configurations are for wsltty; if you use a different shell, you'll need to adapt those parts.
+
 
 ## How to Use
 

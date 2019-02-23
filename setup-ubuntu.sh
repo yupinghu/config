@@ -25,44 +25,6 @@ function get_solarized() {
   clone https://github.com/4lex4/intellij-platform-solarized solarized.jetbrains
 }
 
-# Install desired software from a package manager
-function install_software() {
-  sudo apt update
-  install_list=(
-    git
-    vim
-    gnome-tweak-tool
-    gnome-shell-extensions
-    chrome-gnome-shell
-    fonts-hack
-    fonts-roboto
-  )
-  sudo apt install "${install_list[@]}"
-
-  snap_list_classic=(
-    android-studio
-    atom
-    clion
-    slack
-  )
-  sudo snap install "${snap_list_classic[@]}" --classic
-
-  # Chrome
-  # TODO: Chromium?
-  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  sudo dpkg –i google-chrome-stable_current_amd64.deb
-  rm google-chrome-stable_current_amd64.deb
-
-  # TODO: Can this be automated?
-  gnome_extensions_list=(
-    Alternatetab
-    Dash to panel
-    Panel osd
-    Screenshot tool
-    Gtile
-  )
-}
-
 # Link dotfiles from config directory into $HOME.
 function link_dotfiles() {
   ln -fs ~/config/gitconfig ~/.gitconfig
@@ -81,14 +43,7 @@ function gitconfig() {
 
 ## MAIN SCRIPT
 
-pushd ~ > /dev/null
-
-# First things first: Get software, including git.
-install_software $1
-
-clone git@github.com:yupinghu/config.git
-
-cd config
+pushd ~/config > /dev/null
 
 add_env $1
 get_solarized $1
@@ -99,6 +54,8 @@ mkdir -p ~/tmp
 printf '\n\n*** THINGS YOU STILL NEED TO DO ***\n\n'
 echo '* Update your .gitconfig-more as appropriate'
 echo '* Dork with gnome-tweaks'
+
+gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 5000
 
 popd > /dev/null
 
