@@ -39,13 +39,20 @@ function install_software() {
   )
   sudo apt install "${install_list[@]}"
 
-  # TODO: Add the correct repositories needed for these, and then add to the list above.
-  install_list_more=(
-    google-chrome-stable
+  snap_list_classic=(
+    android-studio
     atom
-    fonts-hack-ttf
-    fonts-roboto-hinted
+    clion
+    slack
   )
+  sudo snap install "${snap_list_classic[@]}" --classic
+
+  # Chrome
+  # TODO: Chromium?
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  sudo dpkg –i google-chrome-stable_current_amd64.deb
+  rm google-chrome-stable_current_amd64.deb
+
   # TODO: Can this be automated?
   gnome_extensions_list=(
     Alternatetab
@@ -74,12 +81,14 @@ function gitconfig() {
 
 ## MAIN SCRIPT
 
+pushd ~ > /dev/null
+
 # First things first: Get software, including git.
 install_software $1
 
 clone git@github.com:yupinghu/config.git
 
-pushd ~/config > /dev/null
+cd config
 
 add_env $1
 get_solarized $1
