@@ -43,6 +43,15 @@ snap_list_work=(
 #sudo apt install ./google-chrome-stable_current_amd64.deb
 #rm google-chrome-stable_current_amd64.deb
 
+if [ -f ~/.ssh/id_rsa.pub ]; then
+  ssh-keygen -t rsa -b 4096 -C "yu.ping.hu@gmail.com"
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+fi
+
+cat ~/.ssh/id_rsa.pub
+chromium https://github.com/settings/keys
+
 # TODO: Can this be automated?
 gnome_extensions_list=(
   Alternatetab
