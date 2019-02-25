@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 username=`whoami`
+email="yu.ping.hu@gmail.com"
 
 # Clone a git repository if it's not already present, and if it cloned run a command.
 function clone() {
@@ -13,7 +14,7 @@ function clone() {
 function add_env() {
   # Tweak .bashrc to add env.sh.
   if ! grep -q "# $username config" ~/.bashrc ; then
-    printf "\n# $username config\n. ~/config/env.sh\numask 022\n" >> ~/.bashrc
+    printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.bashrc
   fi
 }
 
@@ -38,17 +39,21 @@ function gitconfig() {
   git config user.email yu.ping.hu@gmail.com
 
   # Setup .gitconfig-more
-  printf '[user]\n    email = yu.ping.hu@gmail.com\n[core]\n    autocrlf = input\n' > ~/.gitconfig-more
+  printf '[user]\n    email = %s\n[core]\n    autocrlf = input\n' $email > ~/.gitconfig-more
 }
 
 ## MAIN SCRIPT
 
+if [ -n $1 ]; then
+  email=$1
+fi
+
 pushd ~/config > /dev/null
 
-add_env $1
-get_solarized $1
-link_dotfiles $1
-gitconfig $1
+add_env
+get_solarized
+link_dotfiles
+gitconfig
 mkdir -p ~/tmp
 
 printf '\n\n*** THINGS YOU STILL NEED TO DO ***\n\n'
