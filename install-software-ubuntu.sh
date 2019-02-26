@@ -12,6 +12,7 @@ function snap_install() {
 # MAIN SCRIPT
 
 printf "*** Step 1: apt packages ***\n"
+sudo apt-add-repository ppa:tista/adapta
 sudo apt update
 sudo apt upgrade
 install_list=(
@@ -22,6 +23,7 @@ install_list=(
   chrome-gnome-shell
   fonts-hack
   fonts-roboto
+  adapta-gtk-theme
 )
 sudo apt install "${install_list[@]}"
 
