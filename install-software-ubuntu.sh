@@ -51,7 +51,7 @@ sudo apt install ./google-chrome-stable_current_amd64.deb
 rm google-chrome-stable_current_amd64.deb
 
 printf "\n*** Step 5: Generate SSH key ***\n"
-if [ -f ~/.ssh/id_rsa.pub ]; then
+if [ ! -f ~/.ssh/id_rsa.pub ]; then
   ssh-keygen -t rsa -b 4096 -C "yu.ping.hu@gmail.com"
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/id_rsa
