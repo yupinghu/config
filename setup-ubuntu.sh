@@ -59,6 +59,12 @@ mkdir -p ~/tmp
 printf '\n\n*** THINGS YOU STILL NEED TO DO ***\n\n'
 echo '* Update your .gitconfig-more as appropriate'
 echo '* Dork with gnome-tweaks'
+echo '* Set background (will be opened in chrome)'
+echo '* Set application menu icon (downloaded to ~/Pictures)'
+
+google-chrome https://photos.app.goo.gl/jv3UpdTAkbyzSGEr9
+cd ~/Pictures
+wget https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/OS_Ubuntu.png
 
 gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 5000
 
