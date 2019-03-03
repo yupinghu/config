@@ -30,6 +30,8 @@ script will open chromium to the appropriate page to do this.
 
 ## Windows
 
+
+
 * Install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about)
 * Install [wsltty](https://github.com/mintty/wsltty). This isn't strictly necessary but some of my
   configurations are for wsltty; if you use a different shell, you'll need to adapt those parts.

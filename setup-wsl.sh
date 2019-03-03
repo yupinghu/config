@@ -24,29 +24,6 @@ function get_solarized() {
   clone https://github.com/4lex4/intellij-platform-solarized solarized.jetbrains
 }
 
-# Install desired software from a package manager
-function install_software() {
-    sudo apt-get update
-    sudo apt-get install git
-
-    # TODO: Script the following, or maybe look at package managers like chocolatey.
-
-    # STEP 1: Install chrome manually:
-    # https://www.google.com/chrome/browser/desktop/index.html
-
-    # STEP 2: Open all these pages in chrome, download them, install them.
-    install_list=(
-        https://www.google.com/chrome/browser/desktop/index.html
-        https://atom.io/
-        https://github.com/source-foundry/Hack
-        https://fonts.google.com/specimen/Roboto?selection.family=Roboto
-        https://store.steampowered.com/
-        https://www.blizzard.com/en-us/apps/battle.net/desktop
-        http://www.randyrants.com/category/sharpkeys/
-        https://discordapp.com/
-    )
-}
-
 # Link dotfiles from config directory into $HOME.
 function link_dotfiles() {
   ln -fs ~/config/gitconfig ~/.gitconfig
@@ -77,19 +54,32 @@ function gitconfig() {
 
 ## MAIN SCRIPT
 
-# If there's an argument, treat it as the windows username, needed when linking
-# atom dotfiles.
+# If there's an argument, treat it as the windows username, needed when linking dotfiles.
 if [ ! -z $1 ]; then
   windows_username=$1
 fi
+
+sudo apt update
+sudo apt upgrade
+sudo apt install git
+
+# Setup ssh keys
+if [ ! -f ~/.ssh/id_rsa.pub ]; then
+  ssh-keygen -t rsa -b 4096 -C "yu.ping.hu@gmail.com"
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+fi
+
+printf "Add your ssh key to github (https://github.com/settings/keys):\n\n" &&
+cat ~/.ssh/id_rsa.pub &&
+echo "" &&
+read -p "Press enter to continue..."
 
 # Setup "home" directory in Windows.
 mkdir -p /mnt/c/home/$username
 pushd /mnt/c/home/$username > /dev/null
 
 clone git@github.com:yupinghu/config.git config
-
-install_software
 
 # Setup the links from Linux home directory into /mnt/c.
 cd ~
