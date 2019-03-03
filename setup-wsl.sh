@@ -28,12 +28,10 @@ function get_solarized() {
 function link_dotfiles() {
   ln -fs ~/config/gitconfig ~/.gitconfig
   ln -fs ~/config/vimrc ~/.vimrc
-  pushd /mnt/c/Users/$windows_username > /dev/null
-  # This needs to run as administrator in windows!
-  #cmd.exe /c mklink /D .atom c:\\home\\$username\\config\\atom.config
-  cd AppData/Roaming/wsltty
-  printf "ThemeFile=c:\home\\%s\config\minttyrc\n" $username > config
-  popd > /dev/null
+  # Symlink atom config
+  powershell.exe Start-Process -Verb RunAs -FilePath "cmd" -ArgumentList "/c","mklink","/D","c:\\Users\\$windows_username\\.atom","c:\\home\\$username\\config\\atom.config"
+  # Setup wsltty config
+  printf "ThemeFile=c:\home\\%s\config\minttyrc\n" $username > /mnt/c/Users/$windows_username/AppData/Roaming/wsltty/config
 }
 
 # Make ~/tmp
