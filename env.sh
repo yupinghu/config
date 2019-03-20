@@ -39,7 +39,11 @@ alias gub='git rebase origin/master' # git update branch
 gnb() { # create new branch based on master
   git checkout -b $1 master
 }
-gsync() { # syncs from origin, updates local master, and rebases current branch.
+
+# syncs from origin, updates local master, and rebases current branch.
+unset GIT_PARENTS
+declare -A GIT_PARENTS
+gsync() {
   currentBranch=`git rev-parse --abbrev-ref HEAD`
   git rev-parse --verify develop &> /dev/null
   if [ $? == 0 ]; then
@@ -47,9 +51,16 @@ gsync() { # syncs from origin, updates local master, and rebases current branch.
   else
     mainBranch='master'
   fi
+  echo "* Updating $mainBranch"
   git update origin
   git rebase origin/$mainBranch $mainBranch
-  git rebase origin/$mainBranch $currentBranch
+  if [ ${GIT_PARENTS[$currentBranch]+_} ]; then
+    parentBranch=${GIT_PARENTS[$currentBranch]}
+  else
+    parentBranch=$mainBranch
+  fi
+  echo "* Rebasing $currentBranch onto origin/$parentBranch"
+  git rebase origin/$parentBranch $currentBranch
 }
 
 createremotebranch() { # Start a new branch based on current branch and push it.
