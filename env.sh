@@ -42,7 +42,7 @@ gnb() { # create new branch based on master
 
 # syncs from origin, updates local master, and rebases current branch.
 unset GIT_PARENTS
-if ((BASH_VERSINFO[0] > 3)); then
+if (( BASH_VERSINFO[0] > 3 )); then
   declare -A GIT_PARENTS
 fi
 
@@ -57,7 +57,7 @@ gsync() {
   echo "* Updating $mainBranch"
   git update origin
   git rebase origin/$mainBranch $mainBranch
-  if [ ${GIT_PARENTS[$currentBranch]+_} ]; then
+  if [[ ! -z ${GIT_PARENTS+x} && ${GIT_PARENTS[$currentBranch]+_} ]]; then
     parentBranch=${GIT_PARENTS[$currentBranch]}
   else
     parentBranch=$mainBranch
