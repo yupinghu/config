@@ -42,7 +42,10 @@ gnb() { # create new branch based on master
 
 # syncs from origin, updates local master, and rebases current branch.
 unset GIT_PARENTS
-declare -A GIT_PARENTS
+if ((BASH_VERSINFO[0] > 3)); then
+  declare -A GIT_PARENTS
+fi
+
 gsync() {
   currentBranch=`git rev-parse --abbrev-ref HEAD`
   git rev-parse --verify develop &> /dev/null
