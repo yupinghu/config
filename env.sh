@@ -57,13 +57,21 @@ gsync() {
   echo "* Updating $mainBranch"
   git update origin
   git rebase origin/$mainBranch $mainBranch
-  if [[ ! -z ${GIT_PARENTS+x} && ${GIT_PARENTS[$currentBranch]+_} ]]; then
+  if [[ ${GIT_PARENTS[$currentBranch]+_} ]]; then
+    echo "whee"
     parentBranch=${GIT_PARENTS[$currentBranch]}
   else
     parentBranch=$mainBranch
   fi
   echo "* Rebasing $currentBranch onto origin/$parentBranch"
   git rebase origin/$parentBranch $currentBranch
+}
+
+gcpt() {
+  topCommit=`git rev-parse --verify $1`
+  git branch -f $1 HEAD
+  git co $1
+  git cp $topCommit
 }
 
 createremotebranch() { # Start a new branch based on current branch and push it.
