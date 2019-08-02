@@ -2,9 +2,12 @@
 
 # Aliases relating to this file
 ENV_FILE=~/config/env.sh
+ENV_MORE_FILE=~/config/env-more.sh
 alias realias='source $ENV_FILE'
 alias reenv='source $ENV_FILE'
 alias catenv='cat $ENV_FILE'
+alias catenvmore='cat $ENV_MORE_FILE'
+alias editenv='vim $ENV_MORE_FILE'
 
 # Path setup
 # Store the path that existed before the first time we load this file, so that reloading
