@@ -12,7 +12,7 @@ rem Install stuff
 
 choco install googlechrome
 choco install atom
-choco install osfontpack
+choco install hackfont
 choco install steam
 choco install discord.install
 choco install sharpkeys
