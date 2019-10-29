@@ -61,7 +61,6 @@ gsync() {
   git update origin
   git rebase origin/$mainBranch $mainBranch
   if [[ ${GIT_PARENTS[$currentBranch]+_} ]]; then
-    echo "whee"
     parentBranch=${GIT_PARENTS[$currentBranch]}
   else
     parentBranch=$mainBranch
