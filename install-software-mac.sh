@@ -47,6 +47,7 @@ if [ -z /usr/local/bin/bash ] ; then
   chsh -s /usr/local/bin/bash
 fi
 get_brew git
+get_brew bash-completion
 
 # TODO: apm install package-sync
 

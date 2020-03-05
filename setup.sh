@@ -33,7 +33,7 @@ function clone() {
 # Add env.sh to dotfiles.
 function add_env() {
   if [ $1 == "mac" ] ; then
-    printf '. ~/config/env.sh\n' > ~/.bash_profile
+    printf '[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"\n. ~/config/env.sh\n' > ~/.bash_profile
   else
     if ! grep -q "# $username config" ~/.bashrc ; then
       printf '\n# $username config\n. ~/config/env.sh\numask 022\n' >> ~/.bashrc
