@@ -91,7 +91,8 @@ GIT_PS1_SHOWCOLORHINTS=1
 PROMPT_COMMAND='__git_ps1 "\[\033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\]" "\\\$ " && echo -ne "\033]0;${USERNAME}@${HOSTNAME}: ${PWD}\007"'
 
 # Git completion
-. ~/config/git-completion.bash
+# TODO: Add bash-completion for ubuntu, wsl.
+#. ~/config/git-completion.bash
 
 # CMake
 alias build='(cd build && make -j8)'
