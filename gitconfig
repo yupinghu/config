@@ -19,3 +19,4 @@
     submit = push origin HEAD:master
 [push]
 	default = simple
+	followTags = true
