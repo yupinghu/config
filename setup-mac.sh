@@ -13,7 +13,7 @@ function clone() {
 
 # Add env.sh to dotfiles.
 function add_env() {
-  printf '[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"\n. ~/config/env.sh\n' > ~/.bash_profile
+  printf '. ~/config/env.sh\n' > ~/.bash_profile
 }
 
 # Clone the various solarized repos that I use.

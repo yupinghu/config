@@ -9,10 +9,6 @@ alias catenv='cat $ENV_FILE'
 alias catenvmore='cat $ENV_MORE_FILE'
 alias editenv='vim $ENV_MORE_FILE'
 
-if [ -x "$(command -v foo)" ]; then
-  source <(kubectl completion bash)
-fi
-
 # Path setup
 # Store the path that existed before the first time we load this file, so that reloading
 # doesn't just add the same stuff over and over.

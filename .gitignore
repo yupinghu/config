@@ -3,5 +3,6 @@
 *png
 env-more.sh
 solarized.*/
+atom.config/.atom-socket-secret-*
 atom.config/recovery/
 atom.config/nohup.out
