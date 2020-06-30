@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-username=`whoami`
 email="yu.ping.hu@gmail.com"
 
 # Clone a git repository if it's not already present, and if it cloned run a command.
