@@ -91,7 +91,7 @@ fi
 GIT_PS1_DESCRIBE_STYLE='describe'
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWCOLORHINTS=1
-PROMPT_COMMAND='__git_ps1 "\[\033[${PROMPT_HEADER_COLOR}m\]$(uname)\[\033[0m\] \[\033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\]" "\\\$ "'
+PROMPT_COMMAND='__git_ps1 "\[\033[${PROMPT_HEADER_COLOR}m\][$(uname)]\[\033[0m\] \[\033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\]" "\\\$ "'
 
 # Git completion
 # TODO: Add bash-completion for ubuntu, wsl.
