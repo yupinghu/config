@@ -82,11 +82,16 @@ createremotebranch() { # Start a new branch based on current branch and push it.
 }
 
 # Git prompt
+if [ "$(uname)" == "Darwin" ]; then
+  PROMPT_HEADER_COLOR="34"
+else
+  PROMPT_HEADER_COLOR="31"
+fi
 . ~/config/git-prompt.sh
 GIT_PS1_DESCRIBE_STYLE='describe'
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWCOLORHINTS=1
-PROMPT_COMMAND='__git_ps1 "\[\033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\]" "\\\$ " && echo -ne "\033]0;${USERNAME}@${HOSTNAME}: ${PWD}\007"'
+PROMPT_COMMAND='__git_ps1 "\033[${PROMPT_HEADER_COLOR}m\][$(uname)]\033[0m\] \033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\]" "\\\$ "'
 
 # Git completion
 # TODO: Add bash-completion for ubuntu, wsl.
