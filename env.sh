@@ -91,8 +91,6 @@ else
   else
     PROMPT_HOST=$(hostname)
   fi
-  $(sed -n 's/^cd.*cloud/\1/p' $(hostname))
-  PROMPT_HOST=$uname
   PROMPT_HEADER_COLOR="31"
 fi
 . ~/config/git-prompt.sh
