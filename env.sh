@@ -83,15 +83,23 @@ createremotebranch() { # Start a new branch based on current branch and push it.
 
 # Git prompt
 if [ "$(uname)" == "Darwin" ]; then
+  PROMPT_HOST="macbook"
   PROMPT_HEADER_COLOR="34"
 else
+  if hostname | grep -q "cd.*cloud" ; then
+    PROMPT_HOST="cloud"
+  else
+    PROMPT_HOST=$(hostname)
+  fi
+  $(sed -n 's/^cd.*cloud/\1/p' $(hostname))
+  PROMPT_HOST=$uname
   PROMPT_HEADER_COLOR="31"
 fi
 . ~/config/git-prompt.sh
 GIT_PS1_DESCRIBE_STYLE='describe'
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWCOLORHINTS=1
-PROMPT_BODY='\[\033[${PROMPT_HEADER_COLOR}m\][$(uname)]\[\033[0m\] \[\033[36m\]\u@\h\[\033[0m\]:\[\033[35m\]\w\[\033[0m\]'
+PROMPT_BODY='\[\033[${PROMPT_HEADER_COLOR}m\]\u@${PROMPT_HOST}\[\033[0m\]:\[\033[35m\]\w\[\033[0m\]'
 GIT_PROMPT_COMMAND='__git_ps1 "$PROMPT_BODY" "\\\$ "'
 UNGIT_PROMPT="${PROMPT_BODY}\$ "
 alias setgitprompt='export PROMPT_COMMAND=$GIT_PROMPT_COMMAND'
