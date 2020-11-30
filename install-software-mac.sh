@@ -37,8 +37,8 @@ printf "*** Step 2: get basic software ***\n"
 get_cask atom
 get_cask google-chrome
 get_cask font-hack
-get_cask karabiner-elements
-get_cask spectacle
+# get_cask karabiner-elements
+get_cask rectangle
 
 # Upgrade bash
 if [ -z /usr/local/bin/bash ] ; then
