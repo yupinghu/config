@@ -86,7 +86,7 @@ if [ "$(uname)" == "Darwin" ]; then
   PROMPT_HOST="macbook"
   PROMPT_HEADER_COLOR="34"
 else
-  if hostname | grep -q "cd.*cloud" ; then
+  if hostname | grep -iq "cd.*cloud" ; then
     PROMPT_HOST="cloud"
   else
     PROMPT_HOST=$(hostname)
