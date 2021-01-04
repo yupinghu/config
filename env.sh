@@ -81,17 +81,20 @@ createremotebranch() { # Start a new branch based on current branch and push it.
   git push --set-upstream origin yph/$1
 }
 
-# Git prompt
+# Git prompt: defaults are blue hostname. WSL uses this as-is; Macbook changes hostname; remote
+# hosts set red prompt and might override name.
+PROMPT_HOST=$(hostname)
+PROMPT_HEADER_COLOR="34"
 if [ "$(uname)" == "Darwin" ]; then
+  # Macbook doesn't want to use whatever random hostname it has.
   PROMPT_HOST="macbook"
-  PROMPT_HEADER_COLOR="34"
-else
+elif [[ ! -v WSL_DISTRO_NAME ]]; then
+  # Non-WSL/Mac (i.e. remote) hosts get a red prompt.
+  PROMPT_HEADER_COLOR="31"
+  # Cloud instance doesn't want to use whatever random hostname it has.
   if hostname | grep -iq "cd.*cloud" ; then
     PROMPT_HOST="cloud"
-  else
-    PROMPT_HOST=$(hostname)
   fi
-  PROMPT_HEADER_COLOR="31"
 fi
 . ~/config/git-prompt.sh
 GIT_PS1_DESCRIBE_STYLE='describe'
@@ -113,11 +116,11 @@ setgitprompt
 alias build='(cd build && make -j8)'
 
 test -r .dircolors && eval "$(dircolors .dircolors)"
-if [[ `uname` == 'Linux' ]]; then
-  alias mapmediakeys='xmodmap ~/config/mediakeys.xmodmap'
-else
-  alias mapmediakeys=':'
-fi
+#if [[ `uname` == 'Linux' ]]; then
+#  alias mapmediakeys='xmodmap ~/config/mediakeys.xmodmap'
+#else
+#  alias mapmediakeys=':'
+#fi
 
 # Load per-machine (or otherwise not in git) files.
 if [ -a ~/config/env-more.sh ]; then
