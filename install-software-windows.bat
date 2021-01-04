@@ -12,9 +12,9 @@ choco install atom
 choco install hackfont
 choco install steam
 choco install discord.install
+choco install powertoys
 
 rem These aren't available on chocolatey.
-rem https://www.randyrants.com/category/sharpkeys/
 rem https://www.blizzard.com/en-us/apps/battle.net/desktop
 pause
 
