@@ -96,4 +96,7 @@ gitconfig
 
 popd > /dev/null
 
+# Install rclone
+curl https://rclone.org/install.sh | sudo bash
+
 exit 0
