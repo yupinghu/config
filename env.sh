@@ -36,14 +36,10 @@ else
 fi
 alias tidy='rm -f *~ .*~'
 
-# git
-alias gb='git co' # git branch
-alias gub='git rebase origin/master' # git update branch
-gnb() { # create new branch based on master
-  git checkout -b $1 master
-}
-
-# syncs from origin, updates local master, and rebases current branch.
+# gsync: syncs from origin, updates local master, and rebases current branch.
+# GIT_PARENTS is used for branches that aren't based on the main branch.
+# TODO: This behavior is kinda weird and probably a bit nonsensical, fix it the next time
+# you try to use it.
 unset GIT_PARENTS
 if (( BASH_VERSINFO[0] > 3 )); then
   declare -A GIT_PARENTS
@@ -74,11 +70,6 @@ gcpt() {
   git branch -f $1 HEAD
   git co $1
   git cp $topCommit
-}
-
-createremotebranch() { # Start a new branch based on current branch and push it.
-  git co -b yph/$1
-  git push --set-upstream origin yph/$1
 }
 
 # Git prompt: defaults are blue hostname. WSL uses this as-is; Macbook changes hostname; remote
@@ -112,15 +103,18 @@ setgitprompt
 # TODO: Add bash-completion for ubuntu, wsl.
 #. ~/config/git-completion.bash
 
-# CMake
-alias build='(cd build && make -j8)'
-
 test -r .dircolors && eval "$(dircolors .dircolors)"
-#if [[ `uname` == 'Linux' ]]; then
-#  alias mapmediakeys='xmodmap ~/config/mediakeys.xmodmap'
-#else
-#  alias mapmediakeys=':'
-#fi
+
+# rclone stuff, only on my windows machine
+# Handy reference: https://gist.github.com/briantkatch/95b159ed5ba7e1d5d85d74c6e4b04dea
+if [[ -v WSL_DISTRO_NAME ]]; then
+  backup() {
+    rclone sync /mnt/d/$1 $1:
+  }
+  restore() {
+    rclone sync $1:$2 /mnt/d/tmp/$1/$2
+  }
+fi
 
 # Load per-machine (or otherwise not in git) files.
 if [ -a ~/config/env-more.sh ]; then
