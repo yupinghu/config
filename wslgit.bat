@@ -1,1 +1,0 @@
-@bash.exe -c "git %*"

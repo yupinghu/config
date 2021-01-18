@@ -99,9 +99,14 @@ alias unsetgitprompt='unset PROMPT_COMMAND && PS1=$UNGIT_PROMPT'
 # Default turn git prompt on.
 setgitprompt
 
-# Git completion
-# TODO: Add bash-completion for ubuntu, wsl.
-#. ~/config/git-completion.bash
+# bash_completion
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
 
 test -r .dircolors && eval "$(dircolors .dircolors)"
 

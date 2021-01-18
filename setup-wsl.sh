@@ -21,7 +21,7 @@ function add_env() {
 # Clone the various solarized repos that I use.
 function get_solarized() {
   clone https://github.com/seebi/dircolors-solarized.git solarized.directory "ln -fs $HOME/config/solarized.directory/dircolors.256dark $HOME/.dircolors"
-  clone https://github.com/4lex4/intellij-platform-solarized solarized.jetbrains
+  #clone https://github.com/4lex4/intellij-platform-solarized solarized.jetbrains
 }
 
 # Link dotfiles from config directory into $HOME.
@@ -30,8 +30,6 @@ function link_dotfiles() {
   ln -fs ~/config/vimrc ~/.vimrc
   # Symlink atom config
   powershell.exe Start-Process -Verb RunAs -FilePath "cmd" -ArgumentList "/c","mklink","/D","c:\\Users\\$windows_username\\.atom","c:\\home\\$username\\config\\atom.config"
-  # Setup wsltty config
-  printf "ThemeFile=c:\home\\%s\config\minttyrc\n" $username > /mnt/c/Users/$windows_username/AppData/Roaming/wsltty/config
 }
 
 # Make ~/tmp
