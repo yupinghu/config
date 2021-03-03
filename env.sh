@@ -121,6 +121,20 @@ if [[ -v WSL_DISTRO_NAME ]]; then
   }
 fi
 
+NC='\033[0m'
+
+function infmsg() {
+  echo -e "\033[0;32m *** $1${NC}"
+}
+
+function wrnmsg() {
+  echo -e "\033[0;33m *** $1${NC}"
+}
+
+function errmsg() {
+  echo -e "\033[0;31m *** $1${NC}"
+}
+
 # Load per-machine (or otherwise not in git) files.
 if [ -a ~/config/env-more.sh ]; then
     . ~/config/env-more.sh
