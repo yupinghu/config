@@ -18,6 +18,7 @@
     ]
     uriHandlerRegistration: "always"
   editor:
+    defaultFontSize: 16
     fontFamily: "hack"
     fontSize: 16
     preferredLineLength: 100
