@@ -52,7 +52,6 @@ gup() {
   else
     mainBranch='master'
   fi
-  echo "* Updating $mainBranch"
   git update origin
   git rebase origin/$mainBranch $mainBranch
 }
