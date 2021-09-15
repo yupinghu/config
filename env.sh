@@ -45,6 +45,18 @@ if (( BASH_VERSINFO[0] > 3 )); then
   declare -A GIT_PARENTS
 fi
 
+gup() {
+  git rev-parse --verify develop &> /dev/null
+  if [ $? == 0 ]; then
+    mainBranch='develop'
+  else
+    mainBranch='master'
+  fi
+  echo "* Updating $mainBranch"
+  git update origin
+  git rebase origin/$mainBranch $mainBranch
+}
+
 gsync() {
   currentBranch=`git rev-parse --abbrev-ref HEAD`
   git rev-parse --verify develop &> /dev/null
