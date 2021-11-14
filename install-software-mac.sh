@@ -9,15 +9,9 @@ function get_tap() {
   fi
 }
 
-function get_brew() {
+function brew_install() {
   if ! brew list | grep -q "$1" 2> /dev/null ; then
     brew install $1 $2
-  fi
-}
-
-function get_cask() {
-  if ! brew cask list | grep -q "$1" 2> /dev/null ; then
-    brew cask install $1
   fi
 }
 
@@ -30,24 +24,25 @@ brew_path=$(which brew)
 if [ -z "$brew_path" ] ; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
-get_tap caskroom/cask
-get_tap caskroom/fonts
+eval "$(/opt/homebrew/bin/brew shellenv)"
+get_tap homebrew/cask
+get_tap homebrew/cask-fonts
 
 printf "*** Step 2: get basic software ***\n"
-get_cask atom
-get_cask google-chrome
-get_cask font-hack
-# get_cask karabiner-elements
-get_cask rectangle
+brew_install atom
+brew_install google-chrome
+brew_install font-hack
+# brew_install karabiner-elements
+brew_install rectangle
 
 # Upgrade bash
 if [ -z /usr/local/bin/bash ] ; then
-  get_brew bash
-  sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
-  chsh -s /usr/local/bin/bash
+  brew_install bash
+  sudo bash -c 'echo /opt/homebrew/bin/bash >> /etc/shells'
+  chsh -s /opt/homebrew/bin/bash
 fi
-get_brew git
-get_brew bash-completion
+brew_install git
+brew_install bash-completion
 
 # TODO: apm install package-sync
 
@@ -66,12 +61,12 @@ printf "\n*** Step 5: git clone git@github.com:yupinghu/config.git ***\n"
 git clone git@github.com:yupinghu/config.git config
 
 # Work related stuff
-# get_cask google-cloud-sdk
-# get_cask visual-studio-code
-# get_brew go
-# get_brew kubernetes-cli
-# get_brew kubernetes-helm
-# get_brew protobuf
+# brew_install google-cloud-sdk
+# brew_install visual-studio-code
+# brew_install go
+# brew_install kubernetes-cli
+# brew_install kubernetes-helm
+# brew_install protobuf
 
 popd > /dev/null
 exit 0

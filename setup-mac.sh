@@ -17,11 +17,7 @@ function add_env() {
 
 # Clone the various solarized repos that I use.
 function get_solarized() {
-  #clone https://github.com/ArtSabintsev/Solarized-Dark-for-Xcode.git solarized.xcode "echo '*** Install Solarized for Xcode'"
   clone https://github.com/tomislav/osx-terminal.app-colors-solarized.git solarized.terminal "echo '*** Import solarized into terminal.app'"
-
-  # JetBrains IDEs
-  clone https://github.com/4lex4/intellij-platform-solarized solarized.jetbrains
 }
 
 # Link dotfiles from config directory into $HOME.

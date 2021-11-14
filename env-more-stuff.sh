@@ -2,26 +2,13 @@
 
 # Some random stuff that might be needed on a per-machine basis.
 
-# p4
-export P4PORT='perforce:1666'
-export P4USER='yph'
-export P4CLIENT='yph_client'
-export P4EDITOR='vim'
-
-# project directories
-DEV_ROOT=$HOME/dev
-
-P4_ROOT=$HOME/p4
-
-# Add to path
-PATH=$DEV_ROOT:$PATH
-
-# navigation
-alias godev='cd $DEV_ROOT'
-alias pushdev='pushd $DEV_ROOT'
-
 # make
 export MAKEFLAGS='-j8'
+
+# MacOS: I like bash.
+export BASH_SILENCE_DEPRECATION_WARNING=1
+# MacOS: Make sure brew is setup.
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # MacOS: Copy Message attachments
 alias cpMessageAttach='mkdir -p $HOME/Downloads/message_attachments && find $HOME/Library/Messages/Attachments -type f -exec cp "{}" $HOME/Downloads/message_attachments \;'
@@ -31,17 +18,10 @@ alias run='open -a'
 alias activitymonitor='run "Activity Monitor"'
 alias atom='run atom'
 alias chrome='run "Google Chrome"'
-alias clion='run CLion'
 alias facetime='run FaceTime'
 alias msg='run Messages'
 alias safari='run Safari'
-alias signal='run signal'
-alias siri='run Siri'
-alias spectacle='run Spectacle'
-alias studio='run "Android Studio"'
 alias sysprefs='run "System Preferences"'
-alias unity='run Unity'
-alias xcode='run Xcode'
 
 # WSL: Application aliases
 
