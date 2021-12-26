@@ -8,7 +8,7 @@ export MAKEFLAGS='-j8'
 # MacOS: I like bash.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 # MacOS: Make sure brew is setup.
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/usr/local/bin/brew shellenv)"
 
 # MacOS: Copy Message attachments
 alias cpMessageAttach='mkdir -p $HOME/Downloads/message_attachments && find $HOME/Library/Messages/Attachments -type f -exec cp "{}" $HOME/Downloads/message_attachments \;'

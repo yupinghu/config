@@ -47,17 +47,10 @@ if [ -n $1 ]; then
   email=$1
 fi
 
-pushd ~ > /dev/null
-
-clone git@github.com:yupinghu/config.git config
-cd config
-
 add_env
 get_solarized
 link_dotfiles
 gitconfig
 mkdir -p ~/tmp
-
-popd > /dev/null
 
 exit 0

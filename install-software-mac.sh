@@ -22,7 +22,7 @@ pushd ~ > /dev/null
 printf "*** Step 1: get homebrew ***\n"
 brew_path=$(which brew)
 if [ -z "$brew_path" ] ; then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 get_tap homebrew/cask
@@ -38,8 +38,8 @@ brew_install rectangle
 # Upgrade bash
 if [ -z /usr/local/bin/bash ] ; then
   brew_install bash
-  sudo bash -c 'echo /opt/homebrew/bin/bash >> /etc/shells'
-  chsh -s /opt/homebrew/bin/bash
+  sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+  chsh -s /usr/local/bin/bash
 fi
 brew_install git
 brew_install bash-completion
@@ -55,7 +55,7 @@ fi
 
 printf "\n*** Step 4: Open github in chrome so you can add your SSH key ***\n"
 cat ~/.ssh/id_rsa.pub
-google-chrome https://github.com/settings/keys
+open -a "Google Chrome" https://github.com/settings/keys
 
 printf "\n*** Step 5: git clone git@github.com:yupinghu/config.git ***\n"
 git clone git@github.com:yupinghu/config.git config
