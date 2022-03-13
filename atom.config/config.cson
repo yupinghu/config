@@ -35,8 +35,7 @@
     forceOverwrite: true
   "spell-check":
     useLocales: false
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   welcome:
     showOnStartup: false
   whitespace:
