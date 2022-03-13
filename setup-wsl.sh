@@ -21,7 +21,6 @@ function add_env() {
 # Clone the various solarized repos that I use.
 function get_solarized() {
   clone https://github.com/seebi/dircolors-solarized.git solarized.directory "ln -fs $HOME/config/solarized.directory/dircolors.256dark $HOME/.dircolors"
-  #clone https://github.com/4lex4/intellij-platform-solarized solarized.jetbrains
 }
 
 # Link dotfiles from config directory into $HOME.
@@ -58,6 +57,7 @@ fi
 sudo apt update
 sudo apt upgrade
 sudo apt install git
+sudo apt install ripgrep
 
 # Setup ssh keys
 if [ ! -f ~/.ssh/id_rsa.pub ]; then
