@@ -94,6 +94,8 @@ elif [[ ! -v WSL_DISTRO_NAME ]]; then
   # Cloud instance doesn't want to use whatever random hostname it has.
   if hostname | grep -iq "cd.*cloud" ; then
     PROMPT_HOST="cloud"
+  elif hostname | grep -iq "cs-" ; then
+    PROMPT_HOST="shell"
   fi
 fi
 . ~/config/git-prompt.sh

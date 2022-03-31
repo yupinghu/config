@@ -21,16 +21,12 @@ function add_env() {
 # Clone the various solarized repos that I use.
 function get_solarized() {
   clone https://github.com/seebi/dircolors-solarized.git solarized.directory "ln -fs $HOME/config/solarized.directory/dircolors.256dark $HOME/.dircolors"
-  clone  https://github.com/Anthony25/gnome-terminal-colors-solarized.git solarized.terminal solarized.terminal/install.sh
-  # JetBrains IDEs
-  clone https://github.com/4lex4/intellij-platform-solarized solarized.jetbrains
 }
 
 # Link dotfiles from config directory into $HOME.
 function link_dotfiles() {
   ln -fs ~/config/gitconfig ~/.gitconfig
   ln -fs ~/config/vimrc ~/.vimrc
-  ln -fs ~/config/atom.config ~/.atom
 }
 
 # Setup various gitconfigurations
@@ -55,17 +51,5 @@ get_solarized
 link_dotfiles
 gitconfig
 mkdir -p ~/tmp
-
-printf '\n\n*** THINGS YOU STILL NEED TO DO ***\n\n'
-echo '* Update your .gitconfig-more as appropriate'
-echo '* Dork with gnome-tweaks'
-echo '* Set background (will be opened in chrome)'
-echo '* Set application menu icon (downloaded to ~/Pictures)'
-
-google-chrome https://photos.app.goo.gl/jv3UpdTAkbyzSGEr9
-cd ~/Pictures
-wget https://cdn2.iconfinder.com/data/icons/metro-uinvert-dock/256/OS_Ubuntu.png
-
-gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 5000
 
 popd > /dev/null
