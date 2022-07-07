@@ -1,5 +1,0 @@
-packages: [
-  "autocomplete-clang"
-  "clang-format"
-  "package-sync"
-]

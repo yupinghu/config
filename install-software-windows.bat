@@ -8,7 +8,6 @@ pause
 
 rem Install stuff
 choco install googlechrome
-choco install atom
 choco install hackfont
 choco install steam
 choco install discord.install

@@ -16,7 +16,6 @@ alias cpMessageAttach='mkdir -p $HOME/Downloads/message_attachments && find $HOM
 # MacOS: Application aliases
 alias run='open -a'
 alias activitymonitor='run "Activity Monitor"'
-alias atom='run atom'
 alias chrome='run "Google Chrome"'
 alias facetime='run FaceTime'
 alias msg='run Messages'
@@ -27,19 +26,6 @@ alias sysprefs='run "System Preferences"'
 
 # Note that you can also use this to open folders.
 alias start="cmd.exe /c start"
-
-function atom() {
-  if [ -z $1 ]; then
-    path="."
-  else
-    path=$1
-  fi
-  target_path=$(wslpath -a -w $(readlink -f $path))
-  if [ -z $target_path ]; then
-    target_path=$(wslpath -a -w $(readlink -f $HOME/winhome))
-  fi
-  (cmd.exe /C "atom.cmd $target_path" &> /dev/null)
-}
 
 # startApp path-to-app exeFileName [params...]
 function startApp() {

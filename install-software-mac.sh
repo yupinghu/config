@@ -29,7 +29,6 @@ get_tap homebrew/cask
 get_tap homebrew/cask-fonts
 
 printf "*** Step 2: get basic software ***\n"
-brew_install atom
 brew_install google-chrome
 brew_install font-hack
 # brew_install karabiner-elements

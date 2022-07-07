@@ -24,7 +24,6 @@ function get_solarized() {
 function link_dotfiles() {
   ln -fs ~/config/gitconfig ~/.gitconfig
   ln -fs ~/config/vimrc ~/.vimrc
-  ln -fs ~/config/atom.config ~/.atom
 }
 
 # Make ~/tmp

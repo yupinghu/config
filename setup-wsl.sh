@@ -27,8 +27,6 @@ function get_solarized() {
 function link_dotfiles() {
   ln -fs ~/config/gitconfig ~/.gitconfig
   ln -fs ~/config/vimrc ~/.vimrc
-  # Symlink atom config
-  powershell.exe Start-Process -Verb RunAs -FilePath "cmd" -ArgumentList "/c","mklink","/D","c:\\Users\\$windows_username\\.atom","c:\\home\\$username\\config\\atom.config"
 }
 
 # Make ~/tmp

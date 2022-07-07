@@ -27,26 +27,6 @@ install_list=(
 )
 sudo apt install "${install_list[@]}"
 
-printf "\n*** Step 2: snaps, part 1***\n"
-snap_list=(
-  atom
-)
-snap_install snap_list --classic
-# Fix the atom icon (the snap doesn't seem to install this correctly)
-sudo wget https://dashboard.snapcraft.io/site_media/appmedia/2017/04/atom-256px.png -O /usr/share/pixmaps/atom.png
-
-if [ $1 == "work" ]; then
-  printf "\n*** Step 3: snaps, part 2 (work-related snaps) ***\n"
-  snap_list_work=(
-    android-studio
-    clion
-    slack
-  )
-  snap_install snap_list_work --classic
-else
-  printf "\n*** Step 3 skipped (work not specified) ***\n"
-fi
-
 printf "\n*** Step 4: Chrome ***\n"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
