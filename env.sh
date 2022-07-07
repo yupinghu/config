@@ -28,7 +28,7 @@ if [[ `uname` == 'Darwin' ]]; then
   alias la='ls -AGF'
   alias l='ls -CGF'
 else
-  alias ll='ls -alF --color=auto'
+  alias ll='ls -alFv --color=auto'
   alias la='ls -AF --color=auto'
   alias l='ls -CF --color=auto'
 fi
