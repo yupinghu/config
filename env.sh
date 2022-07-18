@@ -95,6 +95,7 @@ elif [[ ! -v WSL_DISTRO_NAME ]]; then
   if hostname | grep -iq "cd.*cloud" ; then
     PROMPT_HOST="cloud"
   elif hostname | grep -iq "cs-" ; then
+    PROMPT_HEADER_COLOR="33"
     PROMPT_HOST="shell"
   fi
 fi
@@ -149,6 +150,6 @@ function errmsg() {
 alias rmtmp='rm -rf ~/tmp/*'
 
 # Load per-machine (or otherwise not in git) files.
-if [ -a ~/config/env-more.sh ]; then
+if [ -e ~/config/env-more.sh ]; then
     . ~/config/env-more.sh
 fi
