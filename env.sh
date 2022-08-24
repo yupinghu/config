@@ -149,6 +149,8 @@ function errmsg() {
 
 alias rmtmp='rm -rf ~/tmp/*'
 
+alias wipe='clear && history -c'
+
 # Load per-machine (or otherwise not in git) files.
 if [ -e ~/config/env-more.sh ]; then
     . ~/config/env-more.sh
