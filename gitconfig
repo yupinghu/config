@@ -18,6 +18,7 @@
     review = push gerrit HEAD:refs/for/master
     submit = push origin HEAD:master
 [push]
+    autoSetupRemote = true
     default = simple
     followTags = true
 [filter "lfs"]
