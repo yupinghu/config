@@ -90,12 +90,9 @@ if [ "$(uname)" == "Darwin" ]; then
   PROMPT_HOST="macbook"
 elif [[ ! -v WSL_DISTRO_NAME ]]; then
   # Non-WSL/Mac (i.e. remote) hosts get a red prompt.
-  PROMPT_HEADER_COLOR="31"
+  PROMPT_HEADER_COLOR="33"
   # Cloud instance doesn't want to use whatever random hostname it has.
-  if hostname | grep -iq "cd.*cloud" ; then
-    PROMPT_HOST="cloud"
-  elif hostname | grep -iq "cs-" ; then
-    PROMPT_HEADER_COLOR="33"
+  if hostname | grep -iq "cs-" ; then
     PROMPT_HOST="shell"
   fi
 fi
@@ -122,17 +119,6 @@ fi
 
 test -r .dircolors && eval "$(dircolors .dircolors)"
 
-# rclone stuff, only on my windows machine
-# Handy reference: https://gist.github.com/briantkatch/95b159ed5ba7e1d5d85d74c6e4b04dea
-if [[ -v WSL_DISTRO_NAME ]]; then
-  backup() {
-    rclone sync /mnt/d/$1 $1:
-  }
-  restore() {
-    rclone sync $1:$2 /mnt/d/tmp/$1/$2
-  }
-fi
-
 NC='\033[0m'
 
 function infmsg() {
@@ -148,6 +134,9 @@ function errmsg() {
 }
 
 alias rmtmp='rm -rf ~/tmp/*'
+
+alias scp='scp -A'
+alias ssh='ssh -A'
 
 alias wipe='clear && history -c'
 
