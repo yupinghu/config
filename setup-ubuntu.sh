@@ -18,11 +18,6 @@ function add_env() {
   fi
 }
 
-# Clone the various solarized repos that I use.
-function get_solarized() {
-  clone https://github.com/seebi/dircolors-solarized.git solarized.directory "ln -fs $HOME/config/solarized.directory/dircolors.256dark $HOME/.dircolors"
-}
-
 # Link dotfiles from config directory into $HOME.
 function link_dotfiles() {
   ln -fs ~/config/gitconfig ~/.gitconfig
@@ -47,7 +42,6 @@ fi
 pushd ~/config > /dev/null
 
 add_env
-get_solarized
 link_dotfiles
 gitconfig
 mkdir -p ~/tmp
