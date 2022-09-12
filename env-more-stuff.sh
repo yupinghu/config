@@ -5,6 +5,17 @@
 # make
 export MAKEFLAGS='-j8'
 
+# Ubuntu: Switching between docked/undocked
+alias scale='gsettings set org.gnome.desktop.interface text-scaling-factor'
+alias qq='scale 1.5'
+alias ww='scale 1.0'
+
+# Ubuntu: app aliases
+alias bgrun='~/config/bgrun.sh'
+alias chrome='bgrun google-chrome'
+alias steam='bgrun steam'
+alias sysprefs='bgrun gnome-control-center'
+
 # MacOS: I like bash.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 # MacOS: Make sure brew is setup.

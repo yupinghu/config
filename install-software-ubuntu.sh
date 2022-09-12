@@ -47,9 +47,8 @@ printf "\n*** Next step: git clone git@github.com:yupinghu/config.git ***\n"
 
 # TODO: Can this be automated?
 gnome_extensions_list=(
-  Alternatetab
-  Dash to panel
-  Panel osd
   Screenshot tool
   Gtile
+  Gtk Title Bar
+  Hide Activities Button
 )
