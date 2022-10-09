@@ -139,6 +139,7 @@ alias scp='scp -A'
 alias ssh='ssh -A'
 
 alias wipe='clear && history -c'
+alias cls='clear && history -c'
 
 # Load per-machine (or otherwise not in git) files.
 if [ -e ~/config/env-more.sh ]; then
