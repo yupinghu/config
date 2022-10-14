@@ -31,7 +31,9 @@ alias chrome='run "Google Chrome"'
 alias facetime='run FaceTime'
 alias msg='run Messages'
 alias safari='run Safari'
+alias slack='run Slack'
 alias sysprefs='run "System Preferences"'
+alias vscode='run "Visual Studio Code"'
 
 # WSL: Application aliases
 

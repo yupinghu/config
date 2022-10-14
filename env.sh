@@ -141,6 +141,11 @@ alias ssh='ssh -A'
 alias wipe='clear && history -c'
 alias cls='clear && history -c'
 
+# Useful for Macbook network problems.
+if [ "$(uname)" == "Darwin" ]; then
+  alias flushnetwork='sudo ifconfig en0 down && sleep 5 && sudo route flush && sudo ifconfig en0 up'
+fi
+
 # Load per-machine (or otherwise not in git) files.
 if [ -e ~/config/env-more.sh ]; then
     . ~/config/env-more.sh
