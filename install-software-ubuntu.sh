@@ -23,7 +23,6 @@ install_list=(
   chrome-gnome-shell
   fonts-hack
   fonts-roboto
-  adapta-gtk-theme
 )
 sudo apt install "${install_list[@]}"
 
@@ -48,7 +47,14 @@ printf "\n*** Next step: git clone git@github.com:yupinghu/config.git ***\n"
 # TODO: Can this be automated?
 gnome_extensions_list=(
   Screenshot tool
-  Gtile
-  Gtk Title Bar
+  Frippery Move Clock
+  gTile
+  GTK Title Bar
   Hide Activities Button
+  OpenWeather
+  Sound Input & Output Device Chooser
+  Vitals
+
+  Removable Drive Menu
+  Ubuntu Dock
 )
