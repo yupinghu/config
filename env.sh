@@ -88,7 +88,7 @@ PROMPT_HEADER_COLOR="34"
 if [ "$(uname)" == "Darwin" ]; then
   # Macbook doesn't want to use whatever random hostname it has.
   PROMPT_HOST="macbook"
-elif [[ ! -v WSL_DISTRO_NAME ]]; then
+elif [[ -n ${WSL_DISTRO_NAME} ]]; then
   # Non-WSL/Mac (i.e. remote) hosts get a red prompt.
   PROMPT_HEADER_COLOR="33"
   # Cloud instance doesn't want to use whatever random hostname it has.
