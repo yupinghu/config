@@ -60,3 +60,8 @@ alias kobo='startApp "$PROGRAM_FILES_X86_PATH/Kobo" Kobo.exe'
 alias signal='startApp "$LOCAL_APP_PATH/Programs/signal-desktop" Signal.exe'
 alias steam='startApp "$PROGRAM_FILES_X86_PATH/Steam" Steam.exe'
 alias as='startApp "$PROGRAM_FILES_PATH/Android/Android Studio/bin" studio64.exe'
+
+# rclone
+alias rbackup_stick='rclone sync ~/rclone /media/yph/Samsung\ USB/urshanabi_rclone'
+alias rbackup_origin='rclone sync ~/rclone /media/yph/backup_origin/urshanabi_rclone'
+alias rbackup_a110='rclone sync ~/rclone /media/yph/backup_a110/urshanabi_rclone'
