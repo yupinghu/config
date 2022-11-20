@@ -12,13 +12,4 @@ choco install hackfont
 choco install steam
 choco install discord.install
 choco install powertoys
-
-rem These aren't available on chocolatey.
-rem https://www.blizzard.com/en-us/apps/battle.net/desktop
-pause
-
-rem Install WSL & Ubuntu -- do this last in case it fails
-choco install wsl
-choco install wsltty
-rem probably need to reboot before the next line will work
-rem choco install ubuntu-1804
+choco install vscode
