@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 username=`whoami`
-windows_username=`whoami`
 
 # Clone a git repository if it's not already present, and if it cloned run a command.
 function clone() {
@@ -47,25 +46,20 @@ function gitconfig() {
 
 ## MAIN SCRIPT
 
-# If there's an argument, treat it as the windows username, needed when linking dotfiles.
-if [ ! -z $1 ]; then
-  windows_username=$1
-fi
-
 sudo apt update
 sudo apt upgrade
 sudo apt install git
 sudo apt install ripgrep
 
 # Setup ssh keys
-if [ ! -f ~/.ssh/id_rsa.pub ]; then
-  ssh-keygen -t rsa -b 4096 -C "yu.ping.hu@gmail.com"
+if [ ! -f ~/.ssh/id_ed25519.pub ]; then
+  ssh-keygen -t ed25519 -C "yu.ping.hu@gmail.com"
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/id_rsa
 fi
 
 printf "Add your ssh key to github (https://github.com/settings/keys):\n\n" &&
-cat ~/.ssh/id_rsa.pub &&
+cat ~/.ssh/id_ed25519.pub &&
 echo "" &&
 read -p "Press enter to continue..."
 
