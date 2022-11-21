@@ -88,13 +88,9 @@ PROMPT_HEADER_COLOR="34"
 if [ "$(uname)" == "Darwin" ]; then
   # Macbook doesn't want to use whatever random hostname it has.
   PROMPT_HOST="macbook"
-elif [[ -n ${WSL_DISTRO_NAME} ]]; then
+elif [[ -v ${WSL_DISTRO_NAME} ]]; then
   # Non-WSL/Mac (i.e. remote) hosts get a red prompt.
   PROMPT_HEADER_COLOR="33"
-  # Cloud instance doesn't want to use whatever random hostname it has.
-  if hostname | grep -iq "cs-" ; then
-    PROMPT_HOST="shell"
-  fi
 fi
 . ~/config/git-prompt.sh
 GIT_PS1_DESCRIBE_STYLE='describe'
