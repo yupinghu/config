@@ -21,7 +21,7 @@ function add_env() {
 function link_dotfiles() {
   ln -fs ~/config/gitconfig ~/.gitconfig
   ln -fs ~/config/vimrc ~/.vimrc
-  ln -fs ~/config/.dircolors
+  ln -fs ~/config/dircolors ~/.dircolors
 }
 
 # Make ~/tmp
