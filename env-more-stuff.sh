@@ -64,6 +64,7 @@ alias epic='startApp "$PROGRAM_FILES_X86_PATH/Epic Games/Launcher/Portal/Binarie
 alias itunes='startApp "$PROGRAM_FILES_PATH/iTunes" iTunes.exe'
 alias kobo='startApp "$PROGRAM_FILES_X86_PATH/Kobo" Kobo.exe'
 alias signal='startApp "$LOCAL_APP_PATH/Programs/signal-desktop" Signal.exe'
+alias slack='startApp "$PROGRAM_FILES_PATH/Slack" slack.exe'
 alias steam='startApp "$PROGRAM_FILES_X86_PATH/Steam" Steam.exe'
 alias vscode='startApp "$PROGRAM_FILES_PATH/Microsoft VS Code" Code.exe'
 

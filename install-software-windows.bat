@@ -14,5 +14,6 @@ choco install -y hackfont
 choco install -y itunes
 choco install -y powertoys
 choco install -y signal
+choco install -y slack
 choco install -y steam
 choco install -y vscode
