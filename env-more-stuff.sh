@@ -41,8 +41,11 @@ alias vscode='run "Visual Studio Code"'
 alias start="cmd.exe /c start"
 
 # startApp path-to-app exeFileName [params...]
+# cmd.exe complains if its working directory is in WSL, so that's why we push/pop to c:
 function startApp() {
+  pushd /mnt/c >> /dev/null
   start /d "`wslpath -w "$1"`" "${@:2}"
+  popd >> /dev/null
 }
 
 # Common locations for use with startApp.
@@ -52,14 +55,17 @@ START_MENU_PATH='/mnt/c/ProgramData/Microsoft/Windows/Start Menu/Programs'
 LOCAL_APP_PATH='/mnt/c/Users/yupin/AppData/Local'
 
 # Battle.net is weird because the exe name has a space in it, so just run the start menu shortcut.
+alias as='startApp "$PROGRAM_FILES_PATH/Android/Android Studio/bin" studio64.exe'
 alias bnet='startApp "$START_MENU_PATH/Battle.net" Battle.net.lnk'
 alias calibre='startApp "$PROGRAM_FILES_PATH/Calibre2" calibre.exe'
 alias chrome='startApp "$PROGRAM_FILES_X86_PATH/Google/Chrome/Application" chrome.exe'
 alias discord='startApp "$LOCAL_APP_PATH/Discord" Update.exe --processStart Discord.exe'
+alias epic='startApp "$PROGRAM_FILES_X86_PATH/Epic Games/Launcher/Portal/Binaries/Win32" EpicGamesLauncher.exe'
+alias itunes='startApp "$PROGRAM_FILES_PATH/iTunes" iTunes.exe'
 alias kobo='startApp "$PROGRAM_FILES_X86_PATH/Kobo" Kobo.exe'
 alias signal='startApp "$LOCAL_APP_PATH/Programs/signal-desktop" Signal.exe'
 alias steam='startApp "$PROGRAM_FILES_X86_PATH/Steam" Steam.exe'
-alias as='startApp "$PROGRAM_FILES_PATH/Android/Android Studio/bin" studio64.exe'
+alias vscode='startApp "$PROGRAM_FILES_PATH/Microsoft VS Code" Code.exe'
 
 # rclone
 alias rbackup_stick='rclone sync ~/rclone /media/yph/Samsung\ USB/urshanabi_rclone'

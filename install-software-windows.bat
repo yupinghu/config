@@ -7,9 +7,12 @@ rem Confirm chocolatey install
 pause
 
 rem Install stuff
-choco install googlechrome
-choco install hackfont
-choco install steam
-choco install discord.install
-choco install powertoys
-choco install vscode
+choco install -y discord.install
+choco install -y epicgameslauncher
+choco install -y googlechrome
+choco install -y hackfont
+choco install -y itunes
+choco install -y powertoys
+choco install -y signal
+choco install -y steam
+choco install -y vscode
