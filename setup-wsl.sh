@@ -24,10 +24,10 @@ function link_dotfiles() {
   ln -fs ~/config/dircolors ~/.dircolors
 }
 
-# Make ~/tmp
-function make_tmp() {
-  mkdir -p /mnt/c/home/$username/tmp
-  ln -fs /mnt/c/home/$username/tmp ~/tmp
+# Make ~/DIR
+function make_dir() {
+  mkdir -p /mnt/c/home/$username/$1
+  ln -fs /mnt/c/home/$username/$1 ~/$1
 }
 
 # Setup various gitconfigurations
@@ -76,7 +76,8 @@ cd config
 
 add_env
 link_dotfiles
-make_tmp
+make_dir tmp
+make_dir bin
 gitconfig
 
 popd > /dev/null

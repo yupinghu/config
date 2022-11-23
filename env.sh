@@ -16,7 +16,7 @@ if [ -z ${BASE_PATH+x} ]; then
     export BASE_PATH=$PATH
 fi
 # Reset the path now, and downstream guys can add to it with the "normal" mechanism.
-PATH=$BASE_PATH
+PATH=$BASE_PATH:~/bin
 
 if [ -z ${USERNAME+x} ]; then
     export USERNAME=$USER

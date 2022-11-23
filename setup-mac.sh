@@ -51,5 +51,6 @@ get_solarized
 link_dotfiles
 gitconfig
 mkdir -p ~/tmp
+mkdir -p ~/bin
 
 exit 0
