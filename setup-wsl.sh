@@ -1,51 +1,19 @@
 #!/usr/bin/env bash
 
-username=`whoami`
-
-# Clone a git repository if it's not already present, and if it cloned run a command.
-function clone() {
-  if [ ! -d $2 ]; then
-    git clone $1 $2
-    eval $3
-  fi
-}
-
-# Add env.sh to dotfiles.
-function add_env() {
-  if ! grep -q "# $username config" ~/.bashrc ; then
-    printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.bashrc
-  fi
-}
-
-# Link dotfiles from config directory into $HOME.
-function link_dotfiles() {
-  ln -fs ~/config/gitconfig ~/.gitconfig
-  ln -fs ~/config/vimrc ~/.vimrc
-  ln -fs ~/config/dircolors ~/.dircolors
-}
-
-# Make ~/DIR
+# Make a directory in c:\data and symlink it here.
 function make_dir() {
-  mkdir -p /mnt/c/home/$username/$1
-  ln -fs /mnt/c/home/$username/$1 ~/$1
-}
-
-# Setup various gitconfigurations
-function gitconfig() {
-  # Set my personal email address in this repository.
-  git config user.email yu.ping.hu@gmail.com
-
-  # Setup .gitconfig-more
-  printf '[user]\n    email = yu.ping.hu@gmail.com\n' > ~/.gitconfig-more
-  printf '[core]\n    autocrlf = true\n' >> ~/.gitconfig-more
+  mkdir -p /mnt/c/data/$1
+  ln -fs /mnt/c/data/$1 ~/$1
 }
 
 ## MAIN SCRIPT
 
+# Install Ubuntu software that I like.
 sudo apt update
 sudo apt upgrade
 sudo apt install git
 sudo apt install ripgrep
+curl https://rclone.org/install.sh | sudo bash
 
 # Setup ssh keys
 if [ ! -f ~/.ssh/id_ed25519.pub ]; then
@@ -53,36 +21,33 @@ if [ ! -f ~/.ssh/id_ed25519.pub ]; then
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/id_rsa
 fi
-
 printf "Add your ssh key to github (https://github.com/settings/keys):\n\n" &&
 cat ~/.ssh/id_ed25519.pub &&
 echo "" &&
 read -p "Press enter to continue..."
 
-# Setup "home" directory in Windows.
-mkdir -p /mnt/c/home/$username
-pushd /mnt/c/home/$username > /dev/null
+# Get my config repository and link dotfiles.
+if [ ! -d ~/config ]; then
+  git clone git@github.com:yupinghu/config.git
+  # Set my personal email address in the config repository.
+  printf '[user]\n    email = yu.ping.hu@gmail.com\n' >> ~/config/.git/config
+fi
+ln -fs ~/config/gitconfig ~/.gitconfig
+ln -fs ~/config/vimrc ~/.vimrc
+ln -fs ~/config/dircolors ~/.dircolors
 
-clone git@github.com:yupinghu/config.git config
+# Set up various directories including in c:\data
+mkdir -p ~/bin
+make_dir downloads
+make_dir rclone
+mkdir -p ~/tmp
 
-# Setup the links from Linux home directory into /mnt/c.
-cd ~
-mkdir -p /mnt/c/home/downloads
-ln -fs /mnt/c/home/downloads
-ln -fs /mnt/c/home/$username winhome
-ln -fs winhome/config
+# Add env.sh to dotfiles.
+username=`whoami`
+if ! grep -q "# $username config" ~/.bashrc ; then
+  printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.bashrc
+fi
 
-cd config
-
-add_env
-link_dotfiles
-make_dir tmp
-make_dir bin
-gitconfig
-
-popd > /dev/null
-
-# Install rclone
-curl https://rclone.org/install.sh | sudo bash
-
-exit 0
+# Setup .gitconfig-more
+# Note that on work computers, this email address should get corrected!
+printf '[user]\n    email = yu.ping.hu@gmail.com\n' > ~/.gitconfig-more
