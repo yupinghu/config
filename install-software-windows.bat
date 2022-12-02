@@ -8,7 +8,7 @@ pause
 
 rem Install stuff
 choco install -y coretemp
-choco install -y discord.install
+choco install -y discord
 choco install -y epicgameslauncher
 choco install -y googlechrome
 choco install -y hackfont
@@ -19,3 +19,7 @@ choco install -y signal
 choco install -y slack
 choco install -y steam
 choco install -y vscode
+
+rem Install WSL
+pause
+wsl --install

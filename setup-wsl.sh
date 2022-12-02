@@ -39,7 +39,7 @@ ln -fs ~/config/dircolors ~/.dircolors
 # Set up various directories including in c:\data
 mkdir -p ~/bin
 make_dir downloads
-make_dir rclone
+mkdir -p ~/rclone
 mkdir -p ~/tmp
 
 # Add env.sh to dotfiles.

@@ -30,22 +30,19 @@ script will open chromium to the appropriate page to do this.
 
 ## Windows
 
-First install Windows software, including WSL, Ubuntu, and wsltty:
+First install my favorite Windows software, including WSL (run as administrator):
 ```
 powershell (new-object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/yupinghu/config/master/install-software-windows.bat','install-software-windows.bat')
 install-software-windows
 del install-software-windows.bat
 ```
 
-Then run the following from within Ubuntu:
+Then run the following from an Ubuntu terminal:
 ```
 wget https://raw.githubusercontent.com/yupinghu/config/master/setup-wsl.sh
-. setup-wsl.sh [windows-username]
+. setup-wsl.sh
+rm setup-wsl.sh
 ```
-
-If you're setting up for wsl, the script needs to know where your Windows home is (e.g.
-`/mnt/c/Users/yph`) in order to link Atom and wsltty configs. By default it uses your linux username
-but if it's different you can provide it as an argument to `setup-wsl.sh`.
 
 (Side note: these scripts got started for keeping a consistent setup between a Mac laptop and Ubuntu
 workstation; I'm kinda amused that nowadays more and more of it is dedicated to WSL setup.)
