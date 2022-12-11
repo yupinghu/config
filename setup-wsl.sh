@@ -2,8 +2,8 @@
 
 # Make a directory in c:\data and symlink it here.
 function make_dir() {
-  mkdir -p /mnt/c/data/$1
-  ln -fs /mnt/c/data/$1 ~/$1
+  mkdir -p /mnt/c/$1
+  ln -fs /mnt/c/$1 ~/$1
 }
 
 ## MAIN SCRIPT
@@ -36,10 +36,11 @@ ln -fs ~/config/gitconfig ~/.gitconfig
 ln -fs ~/config/vimrc ~/.vimrc
 ln -fs ~/config/dircolors ~/.dircolors
 
-# Set up various directories including in c:\data
+# Set up various directories
 mkdir -p ~/bin
+make_dir data
 make_dir downloads
-mkdir -p ~/rclone
+mkdir -p ~/mnt/d
 mkdir -p ~/tmp
 
 # Add env.sh to dotfiles.
