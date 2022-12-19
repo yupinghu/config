@@ -16,7 +16,7 @@ if [ -z ${BASE_PATH+x} ]; then
     export BASE_PATH=$PATH
 fi
 # Reset the path now, and downstream guys can add to it with the "normal" mechanism.
-PATH=$BASE_PATH:~/bin
+PATH=${BASE_PATH:+${BASE_PATH}:}$HOME/bin
 
 if [ -z ${USERNAME+x} ]; then
     export USERNAME=$USER
@@ -142,7 +142,14 @@ if [ "$(uname)" == "Darwin" ]; then
   alias flushnetwork='sudo ifconfig en0 down && sleep 5 && sudo route flush && sudo ifconfig en0 up'
 fi
 
+# Go stuff
+if command -v go &> /dev/null; then
+  export GOPATH=$HOME/go
+  export GOBIN=$HOME/go/bin
+  PATH=$PATH:$GOBIN:$GOPATH
+fi
+
 # Load per-machine (or otherwise not in git) files.
-if [ -e ~/config/env-more.sh ]; then
-    . ~/config/env-more.sh
+if [ -e $ENV_MORE_FILE ]; then
+  . $ENV_MORE_FILE
 fi
