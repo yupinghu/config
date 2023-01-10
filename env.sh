@@ -43,20 +43,18 @@ if (( BASH_VERSINFO[0] > 3 )); then
   declare -A GIT_PARENTS
 fi
 
+alias gitmainbranch="git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
+
 gup() {
   git rev-parse --verify develop &> /dev/null
-  if [ $? == 0 ]; then
-    mainBranch='develop'
-  else
-    mainBranch='master'
-  fi
+  mainBranch=$(gitmainbranch)
   git update origin
   git rebase origin/$mainBranch $mainBranch
 }
 
 gsync() {
   currentBranch=`git rev-parse --abbrev-ref HEAD`
-  mainBranch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+  mainBranch=$(gitmainbranch)
   echo "* Updating $mainBranch"
   git update origin
   git rebase origin/$mainBranch $mainBranch
