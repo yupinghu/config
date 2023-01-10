@@ -56,12 +56,7 @@ gup() {
 
 gsync() {
   currentBranch=`git rev-parse --abbrev-ref HEAD`
-  git rev-parse --verify develop &> /dev/null
-  if [ $? == 0 ]; then
-    mainBranch='develop'
-  else
-    mainBranch='master'
-  fi
+  mainBranch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
   echo "* Updating $mainBranch"
   git update origin
   git rebase origin/$mainBranch $mainBranch
@@ -147,6 +142,7 @@ if command -v go &> /dev/null; then
   export GOPATH=$HOME/go
   export GOBIN=$HOME/go/bin
   PATH=$PATH:$GOBIN:$GOPATH
+  alias gorun='go run main.go'
 fi
 
 # Load per-machine (or otherwise not in git) files.
