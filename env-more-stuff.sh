@@ -63,6 +63,7 @@ alias chrome='startApp "$PROGRAM_FILES_X86_PATH/Google/Chrome/Application" chrom
 alias discord='startApp "$LOCAL_APP_PATH/Discord" Update.exe --processStart Discord.exe'
 alias ea='startApp "$PROGRAM_FILES_PATH/Electronic Arts/EA Desktop/EA Desktop" EALauncher.exe'
 alias epic='startApp "$PROGRAM_FILES_X86_PATH/Epic Games/Launcher/Portal/Binaries/Win32" EpicGamesLauncher.exe'
+alias gplay='startApp "$PROGRAM_FILES_PATH/Google/Play Games" Bootstrapper.exe'
 alias itunes='startApp "$PROGRAM_FILES_PATH/iTunes" iTunes.exe'
 alias kobo='startApp "$PROGRAM_FILES_X86_PATH/Kobo" Kobo.exe'
 alias signal='startApp "$LOCAL_APP_PATH/Programs/signal-desktop" Signal.exe'
