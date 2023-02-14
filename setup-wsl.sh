@@ -13,6 +13,7 @@ sudo apt update
 sudo apt upgrade
 sudo apt install git
 sudo apt install ripgrep
+sudo apt install zsh
 curl https://rclone.org/install.sh | sudo bash
 
 # Setup ssh keys
@@ -47,6 +48,10 @@ mkdir -p ~/tmp
 username=`whoami`
 if ! grep -q "# $username config" ~/.bashrc ; then
   printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.bashrc
+fi
+
+if ! grep -q "# $username config" ~/.zshrc ; then
+  printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.zshrc
 fi
 
 # Setup .gitconfig-more
