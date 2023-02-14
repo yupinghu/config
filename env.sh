@@ -97,6 +97,7 @@ if [ -z ${ZSH_NAME+x} ]; then
   UNGIT_PROMPT="${PROMPT_BODY}\$ "
   export PROMPT_COMMAND=$GIT_PROMPT_COMMAND
 else
+  autoload -Uz compinit && compinit
   autoload -Uz add-zsh-hook vcs_info
   setopt prompt_subst
   add-zsh-hook precmd vcs_info
