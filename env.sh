@@ -79,36 +79,24 @@ gcpt() {
   git cp $topCommit
 }
 
-# Git prompt: defaults are blue hostname. WSL uses this as-is; Macbook changes hostname; remote
-# hosts set red prompt and might override name.
+# zsh completion
+autoload -Uz compinit && compinit
+
+# Prompt
 PROMPT_HOST=$(hostname)
 if [[ "$(uname)" == "Darwin" ]]; then
   # Macbook doesn't want to use whatever random hostname it has.
   PROMPT_HOST="macbook"
 fi
-
-if [ -z ${ZSH_NAME+x} ]; then
-  . ~/config/git-prompt.sh
-  GIT_PS1_DESCRIBE_STYLE='describe'
-  GIT_PS1_SHOWDIRTYSTATE=1
-  GIT_PS1_SHOWCOLORHINTS=1
-  PROMPT_BODY='\[\033[34m\]\u@${PROMPT_HOST}\[\033[0m\]:\[\033[35m\]\w\[\033[0m\]'
-  GIT_PROMPT_COMMAND='__git_ps1 "$PROMPT_BODY" "\\\$ "'
-  UNGIT_PROMPT="${PROMPT_BODY}\$ "
-  export PROMPT_COMMAND=$GIT_PROMPT_COMMAND
-else
-  autoload -Uz compinit && compinit
-  autoload -Uz add-zsh-hook vcs_info
-  setopt prompt_subst
-  add-zsh-hook precmd vcs_info
-  zstyle ':vcs_info:*' check-for-changes true
-  zstyle ':vcs_info:*' unstagedstr ' %F{red}*%f'
-  zstyle ':vcs_info:*' stagedstr ' %F{green}+%f'
-  zstyle ':vcs_info:git:*' formats       ' (%F{green}%b%f%u%c)'
-  zstyle ':vcs_info:git:*' actionformats ' (%b|%a%u%c)'
-
-  PROMPT='%F{blue}%n@${PROMPT_HOST}%f:%F{magenta}%~%f${vcs_info_msg_0_}%# '
-fi
+autoload -Uz add-zsh-hook vcs_info
+setopt prompt_subst
+add-zsh-hook precmd vcs_info
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr ' %F{red}*%f'
+zstyle ':vcs_info:*' stagedstr ' %F{green}+%f'
+zstyle ':vcs_info:git:*' formats       ' (%F{green}%b%f%u%c)'
+zstyle ':vcs_info:git:*' actionformats ' (%b|%a%u%c)'
+PROMPT='%F{blue}%n@${PROMPT_HOST}%f:%F{magenta}%~%f${vcs_info_msg_0_}%# '
 
 test -r .dircolors && eval "$(dircolors .dircolors)"
 
