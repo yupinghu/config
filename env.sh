@@ -39,15 +39,6 @@ else
 fi
 alias tidy='rm -f *~ .*~'
 
-# gsync: syncs from origin, updates local master, and rebases current branch.
-# GIT_PARENTS is used for branches that aren't based on the main branch.
-# TODO: This behavior is kinda weird and probably a bit nonsensical, fix it the next time
-# you try to use it.
-unset GIT_PARENTS
-if (( BASH_VERSINFO[0] > 3 )); then
-  declare -A GIT_PARENTS
-fi
-
 alias gitmainbranch="git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
 
 gup() {
@@ -63,13 +54,10 @@ gsync() {
   echo "* Updating $mainBranch"
   git update origin
   git rebase origin/$mainBranch $mainBranch
-  if [[ ${GIT_PARENTS[$currentBranch]+_} ]]; then
-    parentBranch=${GIT_PARENTS[$currentBranch]}
-  else
-    parentBranch=$mainBranch
+  if [[ $mainBranch != $currentBranch ]]; then
+    echo "* Rebasing $currentBranch onto origin/$mainBranch"
+    git rebase origin/$mainBranch $currentBranch
   fi
-  echo "* Rebasing $currentBranch onto origin/$parentBranch"
-  git rebase origin/$parentBranch $currentBranch
 }
 
 gcpt() {
