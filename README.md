@@ -7,9 +7,6 @@ aren't me and are running the script. In general the approach to email addresses
 be in the checked in `gitconfig` file, to make it easier to vary them (this is why there's a goofy
 `.gitconfig-more` file that just gets created by the script).
 
-The scripts are smart enough to skip steps that appear to already have been performed so it's safe
-to run multiple times (e.g. to apply new settings after the script has been changed).
-
 If you have machine-specific stuff to add to your environment, put it in `env-more.sh` in this
 directory.
 
@@ -17,16 +14,10 @@ directory.
 
 Run the following commands:
 ```
-wget https://raw.githubusercontent.com/yupinghu/config/master/install-software-ubuntu.sh
-. install-software-ubuntu.sh
+wget https://raw.githubusercontent.com/yupinghu/config/master/setup-ubuntu.sh
+. setup-ubuntu.sh
 rm install-software-ubuntu.sh
-git clone git@github.com:yupinghu/config.git
-cd config
-./setup-ubuntu.sh
 ```
-
-It's not all one script so that you can install your ssh keys to github before cloning. The first
-script will open chromium to the appropriate page to do this.
 
 ## Windows
 

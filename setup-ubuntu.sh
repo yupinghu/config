@@ -3,47 +3,81 @@
 username=`whoami`
 email="yu.ping.hu@gmail.com"
 
-# Clone a git repository if it's not already present, and if it cloned run a command.
-function clone() {
-  if [ ! -d $2 ]; then
-    git clone $1 $2
-    eval $3
-  fi
-}
-
-function add_env() {
-  # Tweak .bashrc to add env.sh.
-  if ! grep -q "# $username config" ~/.bashrc ; then
-    printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.bashrc
-  fi
-}
-
-# Link dotfiles from config directory into $HOME.
-function link_dotfiles() {
-  ln -fs ~/config/gitconfig ~/.gitconfig
-  ln -fs ~/config/vimrc ~/.vimrc
-}
-
-# Setup various gitconfigurations
-function gitconfig() {
-  # Set my personal email address in this repository.
-  git config user.email yu.ping.hu@gmail.com
-
-  # Setup .gitconfig-more
-  printf '[user]\n    email = %s\n[core]\n    autocrlf = input\n' $email > ~/.gitconfig-more
-}
-
-## MAIN SCRIPT
-
 if [ -n $1 ]; then
   email=$1
 fi
 
-pushd ~/config > /dev/null
+printf "\n*** apt ***\n"
+sudo apt update
+sudo apt upgrade
+install_list=(
+  git
+  ripgrep
+  zsh
+  vim
+  gnome-tweak-tool
+  gnome-shell-extensions
+  chrome-gnome-shell
+  fonts-hack
+  fonts-roboto
+)
+sudo apt install "${install_list[@]}"
 
-add_env
-link_dotfiles
-gitconfig
+printf "\n*** Switch to zsh ***\n"
+chsh -s `which zsh`
+
+printf "\n*** Install Chrome ***\n"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
+
+printf "\n*** Generate SSH key ***\n"
+if [ ! -f ~/.ssh/id_rsa.pub ]; then
+  ssh-keygen -t rsa -b 4096 -C "yu.ping.hu@gmail.com"
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+fi
+
+printf "\n*** Open github in chrome so you can add your SSH key ***\n"
+cat ~/.ssh/id_rsa.pub
+google-chrome https://github.com/settings/keys
+
+printf "\n*** Press enter after you've added your key to github... ***\n"
+read
+
+if [ ! -d ~/config ]; then
+  git clone git@github.com:yupinghu/config.git
+  printf '[user]\n    email = %s\n' $email >> ~/config/.git/config
+fi
+
+printf "\n*** Setting up directories, dotfiles, and symlinks ***\n"
+
+mkdir -p ~/bin
+mkdir -p ~/downloads
 mkdir -p ~/tmp
 
-popd > /dev/null
+printf '[user]\n    email = %s\n[core]\n    autocrlf = input\n' $email > ~/.gitconfig-more
+if ! grep -q "# $username config" ~/.bashrc ; then
+  printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.bashrc
+fi
+if ! grep -q "# $username config" ~/.zshrc ; then
+  printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.zshrc
+fi
+
+ln -fs ~/config/gitconfig ~/.gitconfig
+ln -fs ~/config/vimrc ~/.vimrc
+
+# Just here for documentation
+gnome_extensions_list=(
+  Screenshot tool
+  Frippery Move Clock
+  gTile
+  GTK Title Bar
+  Hide Activities Button
+  OpenWeather
+  Sound Input & Output Device Chooser
+  Vitals
+
+  Removable Drive Menu
+  Ubuntu Dock
+)
