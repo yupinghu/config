@@ -7,6 +7,11 @@ if [ -n $1 ]; then
   email=$1
 fi
 
+printf "\n*** Install Chrome ***\n"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
+
 printf "\n*** apt ***\n"
 sudo apt update
 sudo apt upgrade
@@ -15,7 +20,7 @@ install_list=(
   ripgrep
   zsh
   vim
-  gnome-tweak-tool
+  gnome-tweaks
   gnome-shell-extensions
   chrome-gnome-shell
   fonts-hack
@@ -26,16 +31,11 @@ sudo apt install "${install_list[@]}"
 printf "\n*** Switch to zsh ***\n"
 chsh -s `which zsh`
 
-printf "\n*** Install Chrome ***\n"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
-
 printf "\n*** Generate SSH key ***\n"
-if [ ! -f ~/.ssh/id_rsa.pub ]; then
-  ssh-keygen -t rsa -b 4096 -C "yu.ping.hu@gmail.com"
+if [ ! -f ~/.ssh/id_ed25519.pub ]; then
+  ssh-keygen -t ed25519 -C "yu.ping.hu@gmail.com"
   eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/id_rsa
+  ssh-add ~/.ssh/id_ed25519
 fi
 
 printf "\n*** Open github in chrome so you can add your SSH key ***\n"
@@ -68,16 +68,15 @@ ln -fs ~/config/gitconfig ~/.gitconfig
 ln -fs ~/config/vimrc ~/.vimrc
 
 # Just here for documentation
-gnome_extensions_list=(
-  Screenshot tool
-  Frippery Move Clock
-  gTile
-  GTK Title Bar
-  Hide Activities Button
-  OpenWeather
-  Sound Input & Output Device Chooser
-  Vitals
-
-  Removable Drive Menu
-  Ubuntu Dock
-)
+# gnome_extensions_list=(
+#   Screenshot tool
+#   Frippery Move Clock
+#   gTile
+#   GTK Title Bar
+#   Hide Activities Button
+#   OpenWeather
+#   Sound Input & Output Device Chooser
+#   Vitals
+#   Removable Drive Menu
+#   Ubuntu Dock
+# )

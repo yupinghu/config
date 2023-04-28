@@ -20,7 +20,7 @@ curl https://rclone.org/install.sh | sudo bash
 if [ ! -f ~/.ssh/id_ed25519.pub ]; then
   ssh-keygen -t ed25519 -C "yu.ping.hu@gmail.com"
   eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/id_rsa
+  ssh-add ~/.ssh/id_ed25519
 fi
 printf "Add your ssh key to github (https://github.com/settings/keys):\n\n" &&
 cat ~/.ssh/id_ed25519.pub &&
