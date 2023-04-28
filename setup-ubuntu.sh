@@ -21,8 +21,7 @@ install_list=(
   zsh
   vim
   gnome-tweaks
-  gnome-shell-extensions
-  chrome-gnome-shell
+  gnome-shell-extension-manager
   fonts-hack
   fonts-roboto
 )
