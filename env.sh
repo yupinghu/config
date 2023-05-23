@@ -38,6 +38,7 @@ else
   alias egrep='egrep --color=auto'
 fi
 alias tidy='rm -f *~ .*~'
+alias hfind='history 1 | grep'
 
 alias gitmainbranch="git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
 
