@@ -38,7 +38,18 @@ else
   alias egrep='egrep --color=auto'
 fi
 alias tidy='rm -f *~ .*~'
-alias hfind='history 1 | grep'
+
+
+# History
+export HISTSIZE=1000
+export SAVEHIST=1000
+export HISTFILE="${HOME}/.zsh_history"
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_DUPS
+alias history='history -E 1'
 
 alias gitmainbranch="git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
 
