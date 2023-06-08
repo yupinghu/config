@@ -44,7 +44,6 @@ alias tidy='rm -f *~ .*~'
 export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE="${HOME}/.zsh_history"
-setopt SHARE_HISTORY
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_SPACE
@@ -108,12 +107,16 @@ alias ssh='ssh -A'
 alias wipe='clear && history -p'
 alias cls='clear && history -p'
 
+# Homebrew updates path etc. if it's installed.
+if [ -f /opt/homebrew/bin/brew ] ; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Go stuff
 if command -v go &> /dev/null; then
   export GOPATH=$HOME/go
   export GOBIN=$HOME/go/bin
   PATH=$PATH:$GOBIN:$GOPATH
-  alias gorun='go run main.go'
 fi
 
 # Load per-machine (or otherwise not in git) files.

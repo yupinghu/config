@@ -31,19 +31,8 @@ get_tap homebrew/cask-fonts
 printf "*** Step 2: get basic software ***\n"
 brew_install google-chrome
 brew_install font-hack
-# brew_install karabiner-elements
 brew_install rectangle
-
-# Upgrade bash
-if [ -z /usr/local/bin/bash ] ; then
-  brew_install bash
-  sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
-  chsh -s /usr/local/bin/bash
-fi
 brew_install git
-brew_install bash-completion
-
-# TODO: apm install package-sync
 
 printf "\n*** Step 3: Generate SSH key ***\n"
 if [ ! -f ~/.ssh/id_rsa.pub ]; then

@@ -17,11 +17,6 @@ alias sysprefs='bgrun gnome-control-center'
 
 ### MacOS ###
 
-# I like bash.
-export BASH_SILENCE_DEPRECATION_WARNING=1
-# Make sure brew is setup.
-eval "$(/usr/local/bin/brew shellenv)"
-
 # Copy Message attachments
 alias cpMessageAttach='mkdir -p $HOME/Downloads/message_attachments && find $HOME/Library/Messages/Attachments -type f -exec cp "{}" $HOME/Downloads/message_attachments \;'
 
