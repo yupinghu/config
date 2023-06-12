@@ -12,7 +12,6 @@ function clone() {
 
 # Add env.sh to dotfiles.
 function add_env() {
-  printf '. ~/config/env.sh\n' > ~/.bash_profile
   printf '. ~/config/env.sh\n' > ~/.zshrc
 }
 
@@ -23,7 +22,6 @@ function get_solarized() {
 
 # Link dotfiles from config directory into $HOME.
 function link_dotfiles() {
-  ln -fs ~/config/gitconfig ~/.gitconfig
   ln -fs ~/config/vimrc ~/.vimrc
 }
 
@@ -37,8 +35,8 @@ function gitconfig() {
   # Set my personal email address in this repository.
   git config user.email yu.ping.hu@gmail.com
 
-  # Setup .gitconfig-more
-  printf '[user]\n    email = %s\n[core]\n    autocrlf = input\n' $email > ~/.gitconfig-more
+  # Setup .gitconfig
+  printf '[user]\n    email = %s\n[core]\n    autocrlf = input\n[include]\n    path = ~/config/gitconfig\n' $email > ~/.gitconfig
 }
 
 ## MAIN SCRIPT

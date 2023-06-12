@@ -1,5 +1,3 @@
-[include]
-    path = .gitconfig-more
 [user]
     name = Yu Ping Hu
 [core]

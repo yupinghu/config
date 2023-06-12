@@ -29,11 +29,14 @@ read -p "Press enter to continue..."
 
 # Get my config repository and link dotfiles.
 if [ ! -d ~/config ]; then
+  pushd ~ >> /dev/null
   git clone git@github.com:yupinghu/config.git
   # Set my personal email address in the config repository.
-  printf '[user]\n    email = yu.ping.hu@gmail.com\n' >> ~/config/.git/config
+  cd config
+  git config user.email yu.ping.hu@gmail.com
+  popd >> /dev/null
+  printf '[include]\n    path = ~/config/gitconfig\n' >> ~/.gitconfig
 fi
-ln -fs ~/config/gitconfig ~/.gitconfig
 ln -fs ~/config/vimrc ~/.vimrc
 ln -fs ~/config/dircolors ~/.dircolors
 
@@ -46,14 +49,6 @@ mkdir -p ~/tmp
 
 # Add env.sh to dotfiles.
 username=`whoami`
-if ! grep -q "# $username config" ~/.bashrc ; then
-  printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.bashrc
-fi
-
 if ! grep -q "# $username config" ~/.zshrc ; then
   printf '\n# %s config\n. ~/config/env.sh\numask 022\n' $username >> ~/.zshrc
 fi
-
-# Setup .gitconfig-more
-# Note that on work computers, this email address should get corrected!
-printf '[user]\n    email = yu.ping.hu@gmail.com\n' > ~/.gitconfig-more
