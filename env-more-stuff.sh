@@ -38,17 +38,13 @@ alias vscode='run "Visual Studio Code"'
 alias start="cmd.exe /c start"
 
 # startApp path-to-app exeFileName [params...]
-# cmd.exe complains if its working directory is in WSL, so that's why we push/pop to c:
+# cmd.exe complains if its working directory is in WSL.
 function startApp() {
-  pushd /mnt/c >> /dev/null
-  start /d "`wslpath -w "$1"`" "${@:2}"
-  popd >> /dev/null
+  (cd /mnt/c && start /d "`wslpath -w "$1"`" "${@:2}")
 }
 
 function startWinStoreApp() {
-  pushd /mnt/c >> /dev/null
-  start "shell:AppsFolder\\$1"
-  popd >> /dev/null
+  (cd /mnt/c && start "shell:AppsFolder\\$1")
 }
 
 # Common locations for use with startApp.
@@ -71,10 +67,10 @@ alias ffox='startApp "$PROGRAM_FILES_PATH/Mozilla Firefox" firefox.exe'
 alias gplay='startApp "$PROGRAM_FILES_PATH/Google/Play Games" Bootstrapper.exe'
 alias itunes='startWinStoreApp "AppleInc.iTunes_nzyj5cx40ttqa!iTunes"'
 alias kobo='startApp "$PROGRAM_FILES_X86_PATH/Kobo" Kobo.exe'
+alias music='startWinStoreApp "AppleInc.AppleMusicWin_nzyj5cx40ttqa!App"'
 alias signal='startApp "$LOCAL_APP_PATH/Programs/signal-desktop" Signal.exe'
 alias slack='startApp "$PROGRAM_FILES_PATH/Slack" slack.exe'
 alias steam='startApp "$PROGRAM_FILES_X86_PATH/Steam" Steam.exe'
-alias vscode='code'
 
 # Mount USB drives
 alias usbmount='sudo mount -t drvfs d: ~/mnt/d'
