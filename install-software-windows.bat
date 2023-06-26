@@ -12,7 +12,6 @@ choco install -y discord
 choco install -y epicgameslauncher
 choco install -y googlechrome
 choco install -y hackfont
-choco install -y itunes
 choco install -y mac-precision-touchpad
 choco install -y openhardwaremonitor
 choco install -y powertoys
