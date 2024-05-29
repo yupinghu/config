@@ -78,6 +78,9 @@ gcpt() {
   git cp $topCommit
 }
 
+# Stash and Drop
+alias snd="git stash && git stash drop"
+
 # zsh completion
 autoload -Uz compinit && compinit
 
