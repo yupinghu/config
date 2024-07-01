@@ -13,8 +13,6 @@ install_list=(
   ripgrep
   zsh
   vim
-  gnome-tweaks
-  gnome-shell-extension-manager
   fonts-hack
   fonts-roboto
 )
@@ -31,17 +29,3 @@ mkdir -p ~/tmp
 wget https://raw.githubusercontent.com/yupinghu/config/master/setup-common.sh -O ~/tmp/setup-common.sh
 ~/tmp/setup-common.sh
 rm ~/tmp/setup-common.sh
-
-# Just here for documentation
-# gnome_extensions_list=(
-#   Screenshot tool
-#   Frippery Move Clock
-#   gTile
-#   GTK Title Bar
-#   Hide Activities Button
-#   OpenWeather
-#   Sound Input & Output Device Chooser
-#   Vitals
-#   Removable Drive Menu
-#   Ubuntu Dock
-# )

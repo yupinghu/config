@@ -13,7 +13,6 @@ alias ww='scale 1.0'
 alias bgrun='~/config/bgrun.sh'
 alias chrome='bgrun google-chrome'
 alias steam='bgrun steam'
-alias sysprefs='bgrun gnome-control-center'
 
 ### MacOS ###
 
@@ -30,7 +29,6 @@ alias safari='run Safari'
 alias slack='run Slack'
 alias sysprefs='run "System Preferences"'
 alias vscode='run "Visual Studio Code"'
-
 
 ### WSL ###
 
@@ -63,7 +61,6 @@ alias chrome='startApp "$PROGRAM_FILES_X86_PATH/Google/Chrome/Application" chrom
 alias discord='startApp "$LOCAL_APP_PATH/Discord" Update.exe --processStart Discord.exe'
 alias ea='startApp "$PROGRAM_FILES_PATH/Electronic Arts/EA Desktop/EA Desktop" EALauncher.exe'
 alias epic='startApp "$PROGRAM_FILES_X86_PATH/Epic Games/Launcher/Portal/Binaries/Win32" EpicGamesLauncher.exe'
-alias ffox='startApp "$PROGRAM_FILES_PATH/Mozilla Firefox" firefox.exe'
 alias gplay='startApp "$PROGRAM_FILES_PATH/Google/Play Games" Bootstrapper.exe'
 alias itunes='startWinStoreApp "AppleInc.iTunes_nzyj5cx40ttqa!iTunes"'
 alias kobo='startApp "$PROGRAM_FILES_X86_PATH/Kobo" Kobo.exe'
