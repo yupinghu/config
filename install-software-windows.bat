@@ -8,15 +8,12 @@ pause
 
 rem Install stuff
 choco install -y coretemp
-choco install -y discord
 choco install -y epicgameslauncher
 choco install -y googlechrome
 choco install -y hackfont
 choco install -y mac-precision-touchpad
 choco install -y openhardwaremonitor
 choco install -y powertoys
-choco install -y signal
-choco install -y slack
 choco install -y steam
 choco install -y vscode
 

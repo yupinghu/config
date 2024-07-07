@@ -14,7 +14,6 @@ sudo apt upgrade
 sudo apt install git
 sudo apt install ripgrep
 sudo apt install zsh
-curl https://rclone.org/install.sh | sudo bash
 
 chsh -s `which zsh`
 

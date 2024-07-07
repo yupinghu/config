@@ -62,7 +62,6 @@ alias discord='startApp "$LOCAL_APP_PATH/Discord" Update.exe --processStart Disc
 alias ea='startApp "$PROGRAM_FILES_PATH/Electronic Arts/EA Desktop/EA Desktop" EALauncher.exe'
 alias epic='startApp "$PROGRAM_FILES_X86_PATH/Epic Games/Launcher/Portal/Binaries/Win32" EpicGamesLauncher.exe'
 alias gplay='startApp "$PROGRAM_FILES_PATH/Google/Play Games" Bootstrapper.exe'
-alias itunes='startWinStoreApp "AppleInc.iTunes_nzyj5cx40ttqa!iTunes"'
 alias kobo='startApp "$PROGRAM_FILES_X86_PATH/Kobo" Kobo.exe'
 alias music='startWinStoreApp "AppleInc.AppleMusicWin_nzyj5cx40ttqa!App"'
 alias signal='startApp "$LOCAL_APP_PATH/Programs/signal-desktop" Signal.exe'
