@@ -29,6 +29,7 @@ brew_install font-hack
 brew_install git
 brew_install google-chrome
 brew_install rectangle
+brew_install ripgrep
 brew_install visual-studio-code
 
 mkdir -p ~/tmp
