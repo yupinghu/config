@@ -7,15 +7,16 @@ rem Confirm chocolatey install
 pause
 
 rem Install stuff
-choco install -y coretemp
-choco install -y epicgameslauncher
-choco install -y googlechrome
-choco install -y hackfont
 choco install -y mac-precision-touchpad
 choco install -y openhardwaremonitor
-choco install -y powertoys
-choco install -y steam
 choco install -y vscode
+
+winget install -e --id ALCPU.CoreTemp
+winget install -e --id EpicGames.EpicGamesLauncher
+winget install -e --id Google.Chrome
+winget install -e --id Microsoft.PowerToys
+winget install -e --id SourceFoundry.HackFonts
+winget install -e --id Valve.Steam
 
 rem Install WSL
 pause
