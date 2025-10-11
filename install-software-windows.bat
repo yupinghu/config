@@ -8,7 +8,6 @@ pause
 
 rem Install stuff
 choco install -y mac-precision-touchpad
-choco install -y openhardwaremonitor
 choco install -y vscode
 
 winget install -e --id ALCPU.CoreTemp
