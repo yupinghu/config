@@ -3,6 +3,8 @@
 [core]
     editor = vi
     excludesfile = ~/config/gitignore
+    fsmonitor = true
+    untrackedcache = true
 [color]
     ui = auto
 [alias]
